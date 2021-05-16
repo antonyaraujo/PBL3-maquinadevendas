@@ -1,0 +1,4 @@
+module circuito_principal(clk);
+	input clk;
+
+endmodule 

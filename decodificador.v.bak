@@ -1,0 +1,5 @@
+module decodificador(codigoBCD, segA, segB, segC, segD, segE, segF, segG, segP);
+	input reg [3:0] codigoBCD;
+	output segA, segB, segC, segD, segE, segF, segG, segP;
+
+endmodule 
