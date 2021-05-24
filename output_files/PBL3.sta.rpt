@@ -1,5 +1,5 @@
 Timing Analyzer report for PBL3
-Sun May 16 12:43:53 2021
+Fri May 21 08:06:42 2021
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -24,11 +24,9 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
  16. Report RSKM
  17. Unconstrained Paths Summary
  18. Clock Status Summary
- 19. Unconstrained Input Ports
+ 19. Unconstrained Output Ports
  20. Unconstrained Output Ports
- 21. Unconstrained Input Ports
- 22. Unconstrained Output Ports
- 23. Timing Analyzer Messages
+ 21. Timing Analyzer Messages
 
 
 
@@ -75,11 +73,10 @@ https://fpgasoftware.intel.com/eula.
 ; Maximum allowed            ; 2           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 2           ;
+; Maximum used               ; 1           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -97,7 +94,7 @@ https://fpgasoftware.intel.com/eula.
 +------------+-----------------+------------+---------------------------------------------------------------+
 ; Fmax       ; Restricted Fmax ; Clock Name ; Note                                                          ;
 +------------+-----------------+------------+---------------------------------------------------------------+
-; 324.99 MHz ; 304.04 MHz      ; clk        ; limit due to minimum period restriction (max I/O toggle rate) ;
+; 355.11 MHz ; 304.04 MHz      ; clk        ; limit due to minimum period restriction (max I/O toggle rate) ;
 +------------+-----------------+------------+---------------------------------------------------------------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -107,7 +104,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------+--------+---------------+
 ; Clock ; Slack  ; End Point TNS ;
 +-------+--------+---------------+
-; clk   ; -2.077 ; -10.502       ;
+; clk   ; -1.816 ; -6.854        ;
 +-------+--------+---------------+
 
 
@@ -116,7 +113,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------+-------+---------------+
 ; Clock ; Slack ; End Point TNS ;
 +-------+-------+---------------+
-; clk   ; 1.681 ; 0.000         ;
+; clk   ; 1.712 ; 0.000         ;
 +-------+-------+---------------+
 
 
@@ -141,44 +138,46 @@ No paths to report.
 +-------+--------+---------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Setup: 'clk'                                                                                                                                                   ;
-+--------+----------------------------------------+----------------------------------------+--------------+-------------+--------------+------------+------------+
-; Slack  ; From Node                              ; To Node                                ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+--------+----------------------------------------+----------------------------------------+--------------+-------------+--------------+------------+------------+
-; -2.077 ; multiplexador:displays_mux|contador[0] ; multiplexador:displays_mux|contador[0] ; clk          ; clk         ; 1.000        ; 0.000      ; 2.744      ;
-; -1.888 ; multiplexador:displays_mux|contador[1] ; multiplexador:displays_mux|displays[2] ; clk          ; clk         ; 1.000        ; 0.000      ; 2.555      ;
-; -1.887 ; multiplexador:displays_mux|contador[1] ; multiplexador:displays_mux|displays[3] ; clk          ; clk         ; 1.000        ; 0.000      ; 2.554      ;
-; -1.740 ; multiplexador:displays_mux|contador[1] ; multiplexador:displays_mux|contador[0] ; clk          ; clk         ; 1.000        ; 0.000      ; 2.407      ;
-; -1.700 ; multiplexador:displays_mux|contador[1] ; multiplexador:displays_mux|contador[1] ; clk          ; clk         ; 1.000        ; 0.000      ; 2.367      ;
-; -1.642 ; multiplexador:displays_mux|contador[0] ; multiplexador:displays_mux|displays[2] ; clk          ; clk         ; 1.000        ; 0.000      ; 2.309      ;
-; -1.641 ; multiplexador:displays_mux|contador[0] ; multiplexador:displays_mux|displays[3] ; clk          ; clk         ; 1.000        ; 0.000      ; 2.308      ;
-; -1.639 ; multiplexador:displays_mux|contador[0] ; multiplexador:displays_mux|contador[1] ; clk          ; clk         ; 1.000        ; 0.000      ; 2.306      ;
-; -1.476 ; multiplexador:displays_mux|contador[0] ; multiplexador:displays_mux|displays[0] ; clk          ; clk         ; 1.000        ; 0.000      ; 2.143      ;
-; -1.474 ; multiplexador:displays_mux|contador[0] ; multiplexador:displays_mux|displays[1] ; clk          ; clk         ; 1.000        ; 0.000      ; 2.141      ;
-; -1.239 ; multiplexador:displays_mux|contador[1] ; multiplexador:displays_mux|displays[0] ; clk          ; clk         ; 1.000        ; 0.000      ; 1.906      ;
-; -1.235 ; multiplexador:displays_mux|contador[1] ; multiplexador:displays_mux|displays[1] ; clk          ; clk         ; 1.000        ; 0.000      ; 1.902      ;
-+--------+----------------------------------------+----------------------------------------+--------------+-------------+--------------+------------+------------+
++----------------------------------------------------------------------------------------------------+
+; Setup: 'clk'                                                                                       ;
++--------+-----------+---------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node ; To Node ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-----------+---------+--------------+-------------+--------------+------------+------------+
+; -1.816 ; inst32    ; inst31  ; clk          ; clk         ; 1.000        ; 0.000      ; 2.483      ;
+; -1.805 ; inst32    ; inst32  ; clk          ; clk         ; 1.000        ; 0.000      ; 2.472      ;
+; -1.721 ; inst29    ; inst31  ; clk          ; clk         ; 1.000        ; 0.000      ; 2.388      ;
+; -1.717 ; inst29    ; inst32  ; clk          ; clk         ; 1.000        ; 0.000      ; 2.384      ;
+; -1.714 ; inst30    ; inst30  ; clk          ; clk         ; 1.000        ; 0.000      ; 2.381      ;
+; -1.521 ; inst30    ; inst32  ; clk          ; clk         ; 1.000        ; 0.000      ; 2.188      ;
+; -1.519 ; inst30    ; inst29  ; clk          ; clk         ; 1.000        ; 0.000      ; 2.186      ;
+; -1.511 ; inst30    ; inst31  ; clk          ; clk         ; 1.000        ; 0.000      ; 2.178      ;
+; -1.504 ; inst32    ; inst30  ; clk          ; clk         ; 1.000        ; 0.000      ; 2.171      ;
+; -1.277 ; inst31    ; inst32  ; clk          ; clk         ; 1.000        ; 0.000      ; 1.944      ;
+; -1.274 ; inst31    ; inst29  ; clk          ; clk         ; 1.000        ; 0.000      ; 1.941      ;
+; -1.267 ; inst31    ; inst30  ; clk          ; clk         ; 1.000        ; 0.000      ; 1.934      ;
+; -1.266 ; inst31    ; inst31  ; clk          ; clk         ; 1.000        ; 0.000      ; 1.933      ;
++--------+-----------+---------+--------------+-------------+--------------+------------+------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Hold: 'clk'                                                                                                                                                   ;
-+-------+----------------------------------------+----------------------------------------+--------------+-------------+--------------+------------+------------+
-; Slack ; From Node                              ; To Node                                ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+-------+----------------------------------------+----------------------------------------+--------------+-------------+--------------+------------+------------+
-; 1.681 ; multiplexador:displays_mux|contador[1] ; multiplexador:displays_mux|displays[1] ; clk          ; clk         ; 0.000        ; 0.000      ; 1.902      ;
-; 1.685 ; multiplexador:displays_mux|contador[1] ; multiplexador:displays_mux|displays[0] ; clk          ; clk         ; 0.000        ; 0.000      ; 1.906      ;
-; 1.920 ; multiplexador:displays_mux|contador[0] ; multiplexador:displays_mux|displays[1] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.141      ;
-; 1.922 ; multiplexador:displays_mux|contador[0] ; multiplexador:displays_mux|displays[0] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.143      ;
-; 2.085 ; multiplexador:displays_mux|contador[0] ; multiplexador:displays_mux|contador[1] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.306      ;
-; 2.087 ; multiplexador:displays_mux|contador[0] ; multiplexador:displays_mux|displays[3] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.308      ;
-; 2.088 ; multiplexador:displays_mux|contador[0] ; multiplexador:displays_mux|displays[2] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.309      ;
-; 2.146 ; multiplexador:displays_mux|contador[1] ; multiplexador:displays_mux|contador[1] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.367      ;
-; 2.186 ; multiplexador:displays_mux|contador[1] ; multiplexador:displays_mux|contador[0] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.407      ;
-; 2.333 ; multiplexador:displays_mux|contador[1] ; multiplexador:displays_mux|displays[3] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.554      ;
-; 2.334 ; multiplexador:displays_mux|contador[1] ; multiplexador:displays_mux|displays[2] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.555      ;
-; 2.523 ; multiplexador:displays_mux|contador[0] ; multiplexador:displays_mux|contador[0] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.744      ;
-+-------+----------------------------------------+----------------------------------------+--------------+-------------+--------------+------------+------------+
++---------------------------------------------------------------------------------------------------+
+; Hold: 'clk'                                                                                       ;
++-------+-----------+---------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node ; To Node ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+-----------+---------+--------------+-------------+--------------+------------+------------+
+; 1.712 ; inst31    ; inst31  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.933      ;
+; 1.713 ; inst31    ; inst30  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.934      ;
+; 1.720 ; inst31    ; inst29  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.941      ;
+; 1.723 ; inst31    ; inst32  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.944      ;
+; 1.950 ; inst32    ; inst30  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.171      ;
+; 1.957 ; inst30    ; inst31  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.178      ;
+; 1.965 ; inst30    ; inst29  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.186      ;
+; 1.967 ; inst30    ; inst32  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.188      ;
+; 2.160 ; inst30    ; inst30  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.381      ;
+; 2.163 ; inst29    ; inst32  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.384      ;
+; 2.167 ; inst29    ; inst31  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.388      ;
+; 2.251 ; inst32    ; inst32  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.472      ;
+; 2.262 ; inst32    ; inst31  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.483      ;
++-------+-----------+---------+--------------+-------------+--------------+------------+------------+
 
 
 +-------------------------------------------------------------------+
@@ -186,7 +185,7 @@ No paths to report.
 +------------+----------+----------+----------+----------+----------+
 ; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+----------+----------+----------+----------+----------+
-; clk        ; clk      ; 12       ; 0        ; 0        ; 0        ;
+; clk        ; clk      ; 13       ; 0        ; 0        ; 0        ;
 +------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -196,7 +195,7 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +------------+----------+----------+----------+----------+----------+
 ; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+----------+----------+----------+----------+----------+
-; clk        ; clk      ; 12       ; 0        ; 0        ; 0        ;
+; clk        ; clk      ; 13       ; 0        ; 0        ; 0        ;
 +------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -220,10 +219,10 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
-; Unconstrained Input Ports       ; 1     ; 1    ;
-; Unconstrained Input Port Paths  ; 4     ; 4    ;
-; Unconstrained Output Ports      ; 10    ; 10   ;
-; Unconstrained Output Port Paths ; 10    ; 10   ;
+; Unconstrained Input Ports       ; 0     ; 0    ;
+; Unconstrained Input Port Paths  ; 0     ; 0    ;
+; Unconstrained Output Ports      ; 4     ; 4    ;
+; Unconstrained Output Port Paths ; 4     ; 4    ;
 +---------------------------------+-------+------+
 
 
@@ -236,58 +235,28 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +--------+-------+------+-------------+
 
 
-+---------------------------------------------------------------------------------------------------+
-; Unconstrained Input Ports                                                                         ;
-+------------+--------------------------------------------------------------------------------------+
-; Input Port ; Comment                                                                              ;
-+------------+--------------------------------------------------------------------------------------+
-; codigoBCD  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-+------------+--------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                          ;
++-------------+---------------------------------------------------------------------------------------+
+; Output Port ; Comment                                                                               ;
++-------------+---------------------------------------------------------------------------------------+
+; D0          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; D1          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; D2          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; D3          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------+---------------------------------------------------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------+
-; Unconstrained Output Ports                                                                           ;
-+--------------+---------------------------------------------------------------------------------------+
-; Output Port  ; Comment                                                                               ;
-+--------------+---------------------------------------------------------------------------------------+
-; displays[0]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; displays[1]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; displays[2]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; displays[3]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; segmentos[0] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; segmentos[1] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; segmentos[2] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; segmentos[3] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; segmentos[4] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; segmentos[5] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-+--------------+---------------------------------------------------------------------------------------+
-
-
-+---------------------------------------------------------------------------------------------------+
-; Unconstrained Input Ports                                                                         ;
-+------------+--------------------------------------------------------------------------------------+
-; Input Port ; Comment                                                                              ;
-+------------+--------------------------------------------------------------------------------------+
-; codigoBCD  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-+------------+--------------------------------------------------------------------------------------+
-
-
-+------------------------------------------------------------------------------------------------------+
-; Unconstrained Output Ports                                                                           ;
-+--------------+---------------------------------------------------------------------------------------+
-; Output Port  ; Comment                                                                               ;
-+--------------+---------------------------------------------------------------------------------------+
-; displays[0]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; displays[1]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; displays[2]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; displays[3]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; segmentos[0] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; segmentos[1] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; segmentos[2] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; segmentos[3] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; segmentos[4] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; segmentos[5] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-+--------------+---------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                          ;
++-------------+---------------------------------------------------------------------------------------+
+; Output Port ; Comment                                                                               ;
++-------------+---------------------------------------------------------------------------------------+
+; D0          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; D1          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; D2          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; D3          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------+---------------------------------------------------------------------------------------+
 
 
 +--------------------------+
@@ -296,7 +265,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Sun May 16 12:43:50 2021
+    Info: Processing started: Fri May 21 08:06:40 2021
 Info: Command: quartus_sta PBL3 -c PBL3
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -312,14 +281,14 @@ Info (332105): Deriving Clocks
 Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Can't run Report Timing Closure Recommendations. The current device family is not supported.
 Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -2.077
+Info (332146): Worst-case setup slack is -1.816
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.077             -10.502 clk 
-Info (332146): Worst-case hold slack is 1.681
+    Info (332119):    -1.816              -6.854 clk 
+Info (332146): Worst-case hold slack is 1.712
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     1.681               0.000 clk 
+    Info (332119):     1.712               0.000 clk 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -2.289
@@ -331,8 +300,8 @@ Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 3 warnings
     Info: Peak virtual memory: 338 megabytes
-    Info: Processing ended: Sun May 16 12:43:53 2021
-    Info: Elapsed time: 00:00:03
+    Info: Processing ended: Fri May 21 08:06:42 2021
+    Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:02
 
 

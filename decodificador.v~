@@ -19,5 +19,3 @@ module decodificador(codigoBCD, segmentos, clk);
     	endcase 
 	end
 endmodule 
-
-

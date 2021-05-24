@@ -1,75 +1,11 @@
-|circuito_principal
-codigoBCD => codigoBCD.IN1
-clk => clk.IN2
-segmentos[0] <= decodificador:decod.segmentos
-segmentos[1] <= decodificador:decod.segmentos
-segmentos[2] <= decodificador:decod.segmentos
-segmentos[3] <= decodificador:decod.segmentos
-segmentos[4] <= decodificador:decod.segmentos
-segmentos[5] <= decodificador:decod.segmentos
-segmentos[6] <= decodificador:decod.segmentos
-displays[0] <= multiplexador:displays_mux.displays
-displays[1] <= multiplexador:displays_mux.displays
-displays[2] <= multiplexador:displays_mux.displays
-displays[3] <= multiplexador:displays_mux.displays
-
-
-|circuito_principal|multiplexador:displays_mux
-clk => contador[0].CLK
-clk => contador[1].CLK
-clk => contador[2].CLK
-clk => displays[0]~reg0.CLK
-clk => displays[1]~reg0.CLK
-clk => displays[2]~reg0.CLK
-clk => displays[3]~reg0.CLK
-displays[0] <= displays[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-displays[1] <= displays[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-displays[2] <= displays[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-displays[3] <= displays[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|circuito_principal|decodificador:decod
-codigoBCD[0] => Mux0.IN15
-codigoBCD[0] => Mux1.IN15
-codigoBCD[0] => Mux2.IN15
-codigoBCD[0] => Mux3.IN15
-codigoBCD[0] => Mux4.IN15
-codigoBCD[0] => Mux5.IN15
-codigoBCD[0] => Mux6.IN15
-codigoBCD[1] => Mux0.IN14
-codigoBCD[1] => Mux1.IN14
-codigoBCD[1] => Mux2.IN14
-codigoBCD[1] => Mux3.IN14
-codigoBCD[1] => Mux4.IN14
-codigoBCD[1] => Mux5.IN14
-codigoBCD[1] => Mux6.IN14
-codigoBCD[2] => Mux0.IN13
-codigoBCD[2] => Mux1.IN13
-codigoBCD[2] => Mux2.IN13
-codigoBCD[2] => Mux3.IN13
-codigoBCD[2] => Mux4.IN13
-codigoBCD[2] => Mux5.IN13
-codigoBCD[2] => Mux6.IN13
-codigoBCD[3] => Mux0.IN12
-codigoBCD[3] => Mux1.IN12
-codigoBCD[3] => Mux2.IN12
-codigoBCD[3] => Mux3.IN12
-codigoBCD[3] => Mux4.IN12
-codigoBCD[3] => Mux5.IN12
-codigoBCD[3] => Mux6.IN12
-segmentos[0] <= segmentos[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-segmentos[1] <= segmentos[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-segmentos[2] <= segmentos[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-segmentos[3] <= segmentos[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-segmentos[4] <= segmentos[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-segmentos[5] <= segmentos[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-segmentos[6] <= segmentos[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-clk => segmentos[0]~reg0.CLK
-clk => segmentos[1]~reg0.CLK
-clk => segmentos[2]~reg0.CLK
-clk => segmentos[3]~reg0.CLK
-clk => segmentos[4]~reg0.CLK
-clk => segmentos[5]~reg0.CLK
-clk => segmentos[6]~reg0.CLK
+|TAKEMYBODY
+D0 <= inst32.DB_MAX_OUTPUT_PORT_TYPE
+clk => inst32.CLK
+clk => inst30.CLK
+clk => inst31.CLK
+clk => inst29.CLK
+D1 <= inst31.DB_MAX_OUTPUT_PORT_TYPE
+D2 <= inst30.DB_MAX_OUTPUT_PORT_TYPE
+D3 <= inst29.DB_MAX_OUTPUT_PORT_TYPE
 
 

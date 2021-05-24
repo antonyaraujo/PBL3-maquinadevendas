@@ -39,5 +39,6 @@ module multiplexador(clk, displays);
 			end 
 		endcase
 		contador = contador + 1;
-	end	
+	end
+	
 endmodule 
