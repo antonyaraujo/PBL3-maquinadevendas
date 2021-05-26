@@ -1,11 +1,11 @@
-Fitter Status : Successful - Fri May 21 08:06:31 2021
+Fitter Status : Successful - Tue May 25 19:17:04 2021
 Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 Revision Name : PBL3
-Top-level Entity Name : TAKEMYBODY
+Top-level Entity Name : circuito_principal
 Family : MAX II
 Device : EPM240T100C5
 Timing Models : Final
-Total logic elements : 4 / 240 ( 2 % )
-Total pins : 5 / 80 ( 6 % )
+Total logic elements : 6 / 240 ( 3 % )
+Total pins : 9 / 80 ( 11 % )
 Total virtual pins : 0
 UFM blocks : 0 / 1 ( 0 % )

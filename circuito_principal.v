@@ -1,7 +1,9 @@
-module circuito_principal(codigoBCD, clk, segmentos, displays);
+module circuito_principal(cent25, cent50, real1, acumuladorr, clk, codigoBCD);
 	input clk, codigoBCD;
-	output [6:0] segmentos;
-	output [3:0] displays;
+	//output [6:0] segmentos;
+	//output [3:0] displays;
+	input cent25, cent50, real1;
+	output [3:0] acumuladorr;
 	reg espera;	
 	initial espera = 0;
 
@@ -22,6 +24,14 @@ module circuito_principal(codigoBCD, clk, segmentos, displays);
 		.codigoBCD(codigoBCD),
 		.clk(clk),
 		.segmentos(segmentos)
+	);
+	
+	acumulador acum(
+		.centavos_25(cent25),
+		.centavos_50(cent50),
+		.real_1(real1),
+		.clk(clk),
+		.acumulador(acumuladorr)
 	);
 	
 endmodule 

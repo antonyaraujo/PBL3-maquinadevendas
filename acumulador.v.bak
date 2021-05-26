@@ -1,0 +1,22 @@
+module acumulador();
+	input centavos_25, centavos_50, real_1, reset;
+	output valorTotal;
+	
+	reg [3:0] acumulador;
+	initial begin acumulador = 4'b0000;
+	
+	always @ (centavos_25, centavos_50, real_1, reset) begin
+		if (centavos_25)
+			acumulador = acumulador + 4'b0001;		
+		else if (centavos_50) 
+			acumulador = acumulador + 4'b0010;
+		else if (real_1)
+			acumulador = acumulador + 4'b0100;
+		default:
+			acumulador = 0000;
+	end
+	
+	assign valorTotal = acumulador;
+	
+endmodule 
+	

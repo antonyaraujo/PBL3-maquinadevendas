@@ -1,0 +1,103 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/antony/Documents/Mega/UEFS/2020.1/MI - Circuitos Digitais/PBL3/simulation/qsim
+vacumulador
+Z1 !s110 1621978750
+!i10b 1
+!s100 C9>DT14VUZARTHUzz@jLG3
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+INL74n5GzOd8ZlbRe2L^b73
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1621978745
+Z4 8PBL3.vo
+Z5 FPBL3.vo
+!i122 40
+L0 32 370
+Z6 OV;L;2020.1;71
+r1
+!s85 0
+31
+!s108 1621978749.000000
+Z7 !s107 PBL3.vo|
+Z8 !s90 -work|work|PBL3.vo|
+!i113 1
+Z9 o-work work
+Z10 tCvgOpt 0
+vacumulador_vlg_vec_tst
+R1
+!i10b 1
+!s100 <gl@QH8GDUzAAb<hIj@6S3
+R2
+IZh=ii;7SQYb=E:j6>@6g<2
+R3
+R0
+w1621978740
+8Waveform.vwf.vt
+FWaveform.vwf.vt
+!i122 41
+L0 30 52
+R6
+r1
+!s85 0
+31
+!s108 1621978750.000000
+!s107 Waveform.vwf.vt|
+!s90 -work|work|Waveform.vwf.vt|
+!i113 1
+R9
+R10
+vcircuito_principal
+Z11 !s110 1621981259
+!i10b 1
+!s100 eYLXiE7;_6EiF2D>C_@8_1
+R2
+I:M;a0J4<YXb<=W?Wg<9BI2
+R3
+R0
+w1621981256
+R4
+R5
+!i122 54
+L0 32 344
+R6
+r1
+!s85 0
+31
+Z12 !s108 1621981259.000000
+R7
+R8
+!i113 1
+R9
+R10
+vcircuito_principal_vlg_vec_tst
+R11
+!i10b 1
+!s100 jCB4mN14=jm^^AJ`ekmTS0
+R2
+IV[o_c8Nf`50DHA3?oFIM02
+R3
+R0
+w1621981253
+8Waveform2.vwf.vt
+FWaveform2.vwf.vt
+!i122 55
+L0 30 60
+R6
+r1
+!s85 0
+31
+R12
+!s107 Waveform2.vwf.vt|
+!s90 -work|work|Waveform2.vwf.vt|
+!i113 1
+R9
+R10
