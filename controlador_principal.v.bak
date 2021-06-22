@@ -1,0 +1,78 @@
+/* Modulo do controlador principal, maquina de estados responsavel controlar em qual estado a maquina de vendas esta
+	Criado por: Antony Araujo e Ozenilson Alisson 
+	Data: 18 jun 2021*/
+
+module controlador_principal(
+	input wire clk,
+	input produto_existe, valor_correto, habilitador, tempo,
+	output reg [1:0] estado); 
+
+	localparam [1:0] q0 = 0, q1 = 1, q2 = 2, q3 = 3;
+    
+   reg[1:0] estado_reg, estado_prox;
+	
+	always @(posedge clk) begin
+		estado_reg <= estado_prox;
+	end 
+
+	always @(produto_existe, valor_correto, habilitador, tempo, estado_reg) begin 
+		estado_prox = estado_reg;
+		case (estado_reg)
+			q0 : begin
+				if (produto_existe == 0 & valor_correto == 0 & habilitador == 1) begin
+						 
+						estado_prox = q1; 
+				end
+			end
+			
+			q1 : begin
+				if (produto_existe == 0 & valor_correto == 0 & habilitador == 1 & tempo == 0) begin
+						 
+						estado_prox = q0; 
+				end
+				else if (produto_existe == 1 & valor_correto == 0) begin
+						 
+						estado_prox = q2; 
+				end
+			end
+			
+			q2 : begin
+				if (produto_existe == 1 & valor_correto == 0 & tempo == 0) begin
+						 
+						estado_prox = q0; 
+				end
+				else if (produto_existe == 1 & valor_correto == 1) begin
+						 
+						estado_prox = q3; 
+				end		
+			end
+			
+			q3 : begin
+			  
+				if (produto_existe == 1 & valor_correto == 1 & tempo == 0) begin
+						 
+						estado_prox = q0; 
+				end
+			end
+		endcase
+	end 
+	
+	
+	always @(estado_reg) begin
+		case (estado_reg)  
+			q0 : begin
+           estado = q0;
+			end
+			q1 : begin
+           estado = q1;
+			end
+			q2 : begin
+				estado = q2;
+			end
+			q3 : begin
+				estado = q3;
+			end
+		endcase
+	end 
+	
+endmodule

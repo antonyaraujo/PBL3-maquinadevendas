@@ -1,4 +1,5 @@
-module circuito_principal(clk);
-	input clk;
+module circuito_principal(tecla, moedas, clk, segmentos0, segmentos1, segmentos2, segmentos3, displays);
+
+
 
 endmodule 

@@ -1,0 +1,560 @@
+Analysis & Synthesis report for problema3
+Mon Jun 21 23:54:35 2021
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |circuito_principal|controlador_principal:controle|estado_reg
+  9. State Machine - |circuito_principal|controlador_teclado:teclas|state_reg
+ 10. State Machine - |circuito_principal|acumulador:ac|state_reg
+ 11. User-Specified and Inferred Latches
+ 12. Registers Removed During Synthesis
+ 13. Removed Registers Triggering Further Register Optimizations
+ 14. General Register Statistics
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Port Connectivity Checks: "multiplexadorSegmentos:muxSeg"
+ 17. Port Connectivity Checks: "display_segmentos:display"
+ 18. Port Connectivity Checks: "divisor_clock:comb_16"
+ 19. Port Connectivity Checks: "temporizador:tempos"
+ 20. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++---------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                              ;
++-----------------------------+---------------------------------------------+
+; Analysis & Synthesis Status ; Successful - Mon Jun 21 23:54:34 2021       ;
+; Quartus Prime Version       ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name               ; problema3                                   ;
+; Top-level Entity Name       ; circuito_principal                          ;
+; Family                      ; MAX II                                      ;
+; Total logic elements        ; 107                                         ;
+; Total pins                  ; 21                                          ;
+; Total virtual pins          ; 0                                           ;
+; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
++-----------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EPM240T100C5       ;                    ;
+; Top-level entity name                                            ; circuito_principal ; problema3          ;
+; Family name                                                      ; MAX II             ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 2           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                          ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                            ; Library ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------------------------+---------+
+; display_segmentos.v              ; yes             ; User Verilog HDL File  ; /home/antony/Downloads/Problema3 (4)/Problema3/display_segmentos.v      ;         ;
+; controlador_memoria.v            ; yes             ; User Verilog HDL File  ; /home/antony/Downloads/Problema3 (4)/Problema3/controlador_memoria.v    ;         ;
+; controlador_principal.v          ; yes             ; User Verilog HDL File  ; /home/antony/Downloads/Problema3 (4)/Problema3/controlador_principal.v  ;         ;
+; multiplexador.v                  ; yes             ; User Verilog HDL File  ; /home/antony/Downloads/Problema3 (4)/Problema3/multiplexador.v          ;         ;
+; vericador_valor.v                ; yes             ; User Verilog HDL File  ; /home/antony/Downloads/Problema3 (4)/Problema3/vericador_valor.v        ;         ;
+; acumulador.v                     ; yes             ; User Verilog HDL File  ; /home/antony/Downloads/Problema3 (4)/Problema3/acumulador.v             ;         ;
+; controlador_teclado.v            ; yes             ; User Verilog HDL File  ; /home/antony/Downloads/Problema3 (4)/Problema3/controlador_teclado.v    ;         ;
+; gerador_codificador.v            ; yes             ; User Verilog HDL File  ; /home/antony/Downloads/Problema3 (4)/Problema3/gerador_codificador.v    ;         ;
+; temporizador.v                   ; yes             ; User Verilog HDL File  ; /home/antony/Downloads/Problema3 (4)/Problema3/temporizador.v           ;         ;
+; circuito_principal.v             ; yes             ; User Verilog HDL File  ; /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v     ;         ;
+; divisor_clock.v                  ; yes             ; User Verilog HDL File  ; /home/antony/Downloads/Problema3 (4)/Problema3/divisor_clock.v          ;         ;
+; decodificador.v                  ; yes             ; User Verilog HDL File  ; /home/antony/Downloads/Problema3 (4)/Problema3/decodificador.v          ;         ;
+; multiplexadorSegmentos.v         ; yes             ; User Verilog HDL File  ; /home/antony/Downloads/Problema3 (4)/Problema3/multiplexadorSegmentos.v ;         ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Total logic elements                        ; 107   ;
+;     -- Combinational with no register       ; 56    ;
+;     -- Register only                        ; 3     ;
+;     -- Combinational with a register        ; 48    ;
+;                                             ;       ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 40    ;
+;     -- 3 input functions                    ; 33    ;
+;     -- 2 input functions                    ; 28    ;
+;     -- 1 input functions                    ; 3     ;
+;     -- 0 input functions                    ; 0     ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 91    ;
+;     -- arithmetic mode                      ; 16    ;
+;     -- qfbk mode                            ; 0     ;
+;     -- register cascade mode                ; 0     ;
+;     -- synchronous clear/load mode          ; 0     ;
+;     -- asynchronous clear/load mode         ; 12    ;
+;                                             ;       ;
+; Total registers                             ; 51    ;
+; Total logic cells in carry chains           ; 17    ;
+; I/O pins                                    ; 21    ;
+; Maximum fan-out node                        ; clk   ;
+; Maximum fan-out                             ; 51    ;
+; Total fan-out                               ; 399   ;
+; Average fan-out                             ; 3.12  ;
++---------------------------------------------+-------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                     ;
++---------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+--------------------------------------------------------------------+------------------------+--------------+
+; Compilation Hierarchy Node            ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                                                ; Entity Name            ; Library Name ;
++---------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+--------------------------------------------------------------------+------------------------+--------------+
+; |circuito_principal                   ; 107 (4)     ; 51           ; 0          ; 21   ; 0            ; 56 (4)       ; 3 (0)             ; 48 (0)           ; 17 (0)          ; 0 (0)      ; |circuito_principal                                                ; circuito_principal     ; work         ;
+;    |acumulador:ac|                    ; 20 (20)     ; 9            ; 0          ; 0    ; 0            ; 11 (11)      ; 0 (0)             ; 9 (9)            ; 0 (0)           ; 0 (0)      ; |circuito_principal|acumulador:ac                                  ; acumulador             ; work         ;
+;    |controlador_memoria:controle_mem| ; 9 (9)       ; 0            ; 0          ; 0    ; 0            ; 9 (9)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |circuito_principal|controlador_memoria:controle_mem               ; controlador_memoria    ; work         ;
+;    |controlador_principal:controle|   ; 10 (10)     ; 4            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 4 (4)            ; 0 (0)           ; 0 (0)      ; |circuito_principal|controlador_principal:controle                 ; controlador_principal  ; work         ;
+;    |controlador_teclado:teclas|       ; 14 (14)     ; 3            ; 0          ; 0    ; 0            ; 11 (11)      ; 2 (2)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |circuito_principal|controlador_teclado:teclas                     ; controlador_teclado    ; work         ;
+;    |display_segmentos:display|        ; 13 (10)     ; 12           ; 0          ; 0    ; 0            ; 1 (1)        ; 1 (1)             ; 11 (8)           ; 0 (0)           ; 0 (0)      ; |circuito_principal|display_segmentos:display                      ; display_segmentos      ; work         ;
+;       |decodificador:decodB|          ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |circuito_principal|display_segmentos:display|decodificador:decodB ; decodificador          ; work         ;
+;       |decodificador:decodC|          ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |circuito_principal|display_segmentos:display|decodificador:decodC ; decodificador          ; work         ;
+;       |decodificador:decodD|          ; 1 (1)       ; 1            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |circuito_principal|display_segmentos:display|decodificador:decodD ; decodificador          ; work         ;
+;    |divisor_clock:comb_16|            ; 16 (16)     ; 16           ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 16 (16)          ; 16 (16)         ; 0 (0)      ; |circuito_principal|divisor_clock:comb_16                          ; divisor_clock          ; work         ;
+;    |gerador_codificador:gerador|      ; 10 (10)     ; 0            ; 0          ; 0    ; 0            ; 10 (10)      ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |circuito_principal|gerador_codificador:gerador                    ; gerador_codificador    ; work         ;
+;    |multiplexador:mux|                ; 7 (7)       ; 7            ; 0          ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 7 (7)            ; 1 (1)           ; 0 (0)      ; |circuito_principal|multiplexador:mux                              ; multiplexador          ; work         ;
+;    |multiplexadorSegmentos:muxSeg|    ; 3 (3)       ; 0            ; 0          ; 0    ; 0            ; 3 (3)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |circuito_principal|multiplexadorSegmentos:muxSeg                  ; multiplexadorSegmentos ; work         ;
+;    |vericador_valor:verifica|         ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |circuito_principal|vericador_valor:verifica                       ; vericador_valor        ; work         ;
++---------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+--------------------------------------------------------------------+------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------+
+; State Machine - |circuito_principal|controlador_principal:controle|estado_reg ;
++---------------+---------------+---------------+---------------+---------------+
+; Name          ; estado_reg.q3 ; estado_reg.q2 ; estado_reg.q1 ; estado_reg.q0 ;
++---------------+---------------+---------------+---------------+---------------+
+; estado_reg.q0 ; 0             ; 0             ; 0             ; 0             ;
+; estado_reg.q1 ; 0             ; 0             ; 1             ; 1             ;
+; estado_reg.q2 ; 0             ; 1             ; 0             ; 1             ;
+; estado_reg.q3 ; 1             ; 0             ; 0             ; 1             ;
++---------------+---------------+---------------+---------------+---------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------+
+; State Machine - |circuito_principal|controlador_teclado:teclas|state_reg ;
++------------------+------------------+--------------+---------------------+
+; Name             ; state_reg.espera ; state_reg.10 ; state_reg.01        ;
++------------------+------------------+--------------+---------------------+
+; state_reg.espera ; 0                ; 0            ; 0                   ;
+; state_reg.01     ; 1                ; 0            ; 1                   ;
+; state_reg.10     ; 1                ; 1            ; 0                   ;
++------------------+------------------+--------------+---------------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |circuito_principal|acumulador:ac|state_reg                                                                                                             ;
++----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+; Name           ; state_reg.0111 ; state_reg.0110 ; state_reg.0101 ; state_reg.0100 ; state_reg.0011 ; state_reg.0010 ; state_reg.0001 ; state_reg.0000 ; state_reg.1000 ;
++----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+; state_reg.0000 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ;
+; state_reg.0001 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 1              ; 0              ;
+; state_reg.0010 ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 1              ; 0              ;
+; state_reg.0011 ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 1              ; 0              ;
+; state_reg.0100 ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 1              ; 0              ;
+; state_reg.0101 ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ;
+; state_reg.0110 ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ;
+; state_reg.0111 ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ;
+; state_reg.1000 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 1              ;
++----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                                         ;
++-----------------------------------------------------+----------------------------------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal                          ; Free of Timing Hazards ;
++-----------------------------------------------------+----------------------------------------------+------------------------+
+; estado_anterior[1]                                  ; always0                                      ; yes                    ;
+; estado_anterior[0]                                  ; always0                                      ; yes                    ;
+; controlador_memoria:controle_mem|valor_preco[0]     ; controlador_memoria:controle_mem|WideOr0     ; yes                    ;
+; controlador_memoria:controle_mem|valor_preco[1]     ; controlador_memoria:controle_mem|WideOr0     ; yes                    ;
+; controlador_memoria:controle_mem|valor_preco[2]     ; controlador_memoria:controle_mem|WideOr0     ; yes                    ;
+; controlador_memoria:controle_mem|valor_preco[3]     ; controlador_memoria:controle_mem|WideOr0     ; yes                    ;
+; gerador_codificador:gerador|codigo[0]               ; gerador_codificador:gerador|codigo[1]        ; yes                    ;
+; gerador_codificador:gerador|codigo[1]               ; gerador_codificador:gerador|codigo[1]        ; yes                    ;
+; gerador_codificador:gerador|codigo[2]               ; gerador_codificador:gerador|codigo[3]        ; yes                    ;
+; gerador_codificador:gerador|codigo[3]               ; gerador_codificador:gerador|codigo[3]        ; yes                    ;
+; controlador_teclado:teclas|digito[0]                ; controlador_principal:controle|estado_reg.q0 ; yes                    ;
+; controlador_teclado:teclas|digito[1]                ; controlador_principal:controle|estado_reg.q0 ; yes                    ;
+; controlador_teclado:teclas|state_next.00_112        ; controlador_teclado:teclas|state_next.10     ; yes                    ;
+; controlador_teclado:teclas|state_next.01_101        ; controlador_teclado:teclas|state_next.10     ; yes                    ;
+; controlador_teclado:teclas|state_next.10_90         ; controlador_teclado:teclas|state_next.10     ; yes                    ;
+; Number of user-specified and inferred latches = 15  ;                                              ;                        ;
++-----------------------------------------------------+----------------------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++----------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                       ;
++-------------------------------------------------------+--------------------------------------------------+
+; Register name                                         ; Reason for Removal                               ;
++-------------------------------------------------------+--------------------------------------------------+
+; display_segmentos:display|estado_anterior[0,1]        ; Stuck at GND due to stuck port data_in           ;
+; display_segmentos:display|codigoB[3]                  ; Merged with display_segmentos:display|codigoB[1] ;
+; display_segmentos:display|codigoC[3]                  ; Merged with display_segmentos:display|codigoD[3] ;
+; display_segmentos:display|codigoB[2]                  ; Merged with display_segmentos:display|codigoB[0] ;
+; display_segmentos:display|codigoA[2]                  ; Stuck at GND due to stuck port data_in           ;
+; display_segmentos:display|codigoA[0,1,3]              ; Lost fanout                                      ;
+; display_segmentos:display|decodificador:decodA|seg[0] ; Stuck at GND due to stuck port data_in           ;
+; controlador_principal:controle|estado_reg~2           ; Lost fanout                                      ;
+; controlador_principal:controle|estado_reg~3           ; Lost fanout                                      ;
+; acumulador:ac|state_reg~4                             ; Lost fanout                                      ;
+; acumulador:ac|state_reg~5                             ; Lost fanout                                      ;
+; acumulador:ac|state_reg~6                             ; Lost fanout                                      ;
+; divisor_clock:comb_16|contador[0]                     ; Merged with multiplexador:mux|contador[0]        ;
+; divisor_clock:comb_16|contador[1]                     ; Merged with multiplexador:mux|contador[1]        ;
+; divisor_clock:comb_16|contador[18..28]                ; Lost fanout                                      ;
+; Total Number of Removed Registers = 28                ;                                                  ;
++-------------------------------------------------------+--------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                    ;
++--------------------------------------+---------------------------+-----------------------------------------------------------------------------+
+; Register name                        ; Reason for Removal        ; Registers Removed due to This Register                                      ;
++--------------------------------------+---------------------------+-----------------------------------------------------------------------------+
+; display_segmentos:display|codigoA[2] ; Stuck at GND              ; display_segmentos:display|codigoA[0], display_segmentos:display|codigoA[1], ;
+;                                      ; due to stuck port data_in ; display_segmentos:display|codigoA[3],                                       ;
+;                                      ;                           ; display_segmentos:display|decodificador:decodA|seg[0]                       ;
++--------------------------------------+---------------------------+-----------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 51    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 12    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 8     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |circuito_principal|display_segmentos:display|codigoB[0] ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |circuito_principal|display_segmentos:display|codigoA[2] ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |circuito_principal|display_segmentos:display|codigoA[1] ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 6 LEs                ; 4 LEs                  ; Yes        ; |circuito_principal|display_segmentos:display|codigoC[2] ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; Yes        ; |circuito_principal|display_segmentos:display|codigoC[0] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "multiplexadorSegmentos:muxSeg"                                                                                                                          ;
++------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port       ; Type  ; Severity ; Details                                                                                                                                            ;
++------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------+
+; segmentosA ; Input ; Warning  ; Input port expression (1 bits) is smaller than the input port (8 bits) it drives.  Extra input bit(s) "segmentosA[7..1]" will be connected to GND. ;
+; segmentosB ; Input ; Warning  ; Input port expression (1 bits) is smaller than the input port (8 bits) it drives.  Extra input bit(s) "segmentosB[7..1]" will be connected to GND. ;
+; segmentosC ; Input ; Warning  ; Input port expression (1 bits) is smaller than the input port (8 bits) it drives.  Extra input bit(s) "segmentosC[7..1]" will be connected to GND. ;
+; segmentosD ; Input ; Warning  ; Input port expression (1 bits) is smaller than the input port (8 bits) it drives.  Extra input bit(s) "segmentosD[7..1]" will be connected to GND. ;
++------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "display_segmentos:display"                                                                                                          ;
++------------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                                                                       ;
++------------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------+
+; segmentosA ; Output ; Warning  ; Output or bidir port (8 bits) is wider than the port expression (1 bits) it drives; bit(s) "segmentosA[7..1]" have no fanouts ;
+; segmentosB ; Output ; Warning  ; Output or bidir port (8 bits) is wider than the port expression (1 bits) it drives; bit(s) "segmentosB[7..1]" have no fanouts ;
+; segmentosC ; Output ; Warning  ; Output or bidir port (8 bits) is wider than the port expression (1 bits) it drives; bit(s) "segmentosC[7..1]" have no fanouts ;
+; segmentosD ; Output ; Warning  ; Output or bidir port (8 bits) is wider than the port expression (1 bits) it drives; bit(s) "segmentosD[7..1]" have no fanouts ;
++------------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "divisor_clock:comb_16"                                                                     ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port        ; Type   ; Severity ; Details                                                                             ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+; saida_tempo ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "temporizador:tempos"                                                                           ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port            ; Type   ; Severity ; Details                                                                             ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+; tempoTeclado    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; tempoAcumulador ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; tempo           ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Mon Jun 21 23:53:13 2021
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off problema3 -c problema3
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file display_segmentos.v
+    Info (12023): Found entity 1: display_segmentos File: /home/antony/Downloads/Problema3 (4)/Problema3/display_segmentos.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file controlador_memoria.v
+    Info (12023): Found entity 1: controlador_memoria File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_memoria.v Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file controlador_principal.v
+    Info (12023): Found entity 1: controlador_principal File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_principal.v Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file multiplexador.v
+    Info (12023): Found entity 1: multiplexador File: /home/antony/Downloads/Problema3 (4)/Problema3/multiplexador.v Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file vericador_valor.v
+    Info (12023): Found entity 1: vericador_valor File: /home/antony/Downloads/Problema3 (4)/Problema3/vericador_valor.v Line: 6
+Info (12021): Found 1 design units, including 1 entities, in source file acumulador.v
+    Info (12023): Found entity 1: acumulador File: /home/antony/Downloads/Problema3 (4)/Problema3/acumulador.v Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file controlador_teclado.v
+    Info (12023): Found entity 1: controlador_teclado File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_teclado.v Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file gerador_codificador.v
+    Info (12023): Found entity 1: gerador_codificador File: /home/antony/Downloads/Problema3 (4)/Problema3/gerador_codificador.v Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file temporizador.v
+    Info (12023): Found entity 1: temporizador File: /home/antony/Downloads/Problema3 (4)/Problema3/temporizador.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file circuito_principal.v
+    Info (12023): Found entity 1: circuito_principal File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file divisor_clock.v
+    Info (12023): Found entity 1: divisor_clock File: /home/antony/Downloads/Problema3 (4)/Problema3/divisor_clock.v Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file decodificador.v
+    Info (12023): Found entity 1: decodificador File: /home/antony/Downloads/Problema3 (4)/Problema3/decodificador.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file multiplexadorSegmentos.v
+    Info (12023): Found entity 1: multiplexadorSegmentos File: /home/antony/Downloads/Problema3 (4)/Problema3/multiplexadorSegmentos.v Line: 1
+Warning (10236): Verilog HDL Implicit Net warning at circuito_principal.v(96): created implicit net for "segmentosA" File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 96
+Warning (10236): Verilog HDL Implicit Net warning at circuito_principal.v(97): created implicit net for "segmentosB" File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 97
+Warning (10236): Verilog HDL Implicit Net warning at circuito_principal.v(98): created implicit net for "segmentosC" File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 98
+Warning (10236): Verilog HDL Implicit Net warning at circuito_principal.v(99): created implicit net for "segmentosD" File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 99
+Critical Warning (10846): Verilog HDL Instantiation warning at circuito_principal.v(43): instance has no name File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 43
+Info (12127): Elaborating entity "circuito_principal" for the top level hierarchy
+Warning (10235): Verilog HDL Always Construct warning at circuito_principal.v(23): variable "estado_anterior" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 23
+Warning (10240): Verilog HDL Always Construct warning at circuito_principal.v(22): inferring latch(es) for variable "estado_anterior", which holds its previous value in one or more paths through the always construct File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 22
+Info (10041): Inferred latch for "estado_anterior[0]" at circuito_principal.v(27) File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 27
+Info (10041): Inferred latch for "estado_anterior[1]" at circuito_principal.v(27) File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 27
+Info (12128): Elaborating entity "temporizador" for hierarchy "temporizador:tempos" File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 37
+Warning (10230): Verilog HDL assignment warning at temporizador.v(18): truncated value with size 32 to match size of target (3) File: /home/antony/Downloads/Problema3 (4)/Problema3/temporizador.v Line: 18
+Warning (10240): Verilog HDL Always Construct warning at temporizador.v(22): inferring latch(es) for variable "tempoTeclado", which holds its previous value in one or more paths through the always construct File: /home/antony/Downloads/Problema3 (4)/Problema3/temporizador.v Line: 22
+Warning (10240): Verilog HDL Always Construct warning at temporizador.v(22): inferring latch(es) for variable "tempoAcumulador", which holds its previous value in one or more paths through the always construct File: /home/antony/Downloads/Problema3 (4)/Problema3/temporizador.v Line: 22
+Warning (10240): Verilog HDL Always Construct warning at temporizador.v(22): inferring latch(es) for variable "tempo", which holds its previous value in one or more paths through the always construct File: /home/antony/Downloads/Problema3 (4)/Problema3/temporizador.v Line: 22
+Info (10041): Inferred latch for "tempo" at temporizador.v(28) File: /home/antony/Downloads/Problema3 (4)/Problema3/temporizador.v Line: 28
+Info (10041): Inferred latch for "tempoAcumulador" at temporizador.v(28) File: /home/antony/Downloads/Problema3 (4)/Problema3/temporizador.v Line: 28
+Info (10041): Inferred latch for "tempoTeclado" at temporizador.v(28) File: /home/antony/Downloads/Problema3 (4)/Problema3/temporizador.v Line: 28
+Info (12128): Elaborating entity "divisor_clock" for hierarchy "divisor_clock:comb_16" File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 43
+Warning (10230): Verilog HDL assignment warning at divisor_clock.v(21): truncated value with size 32 to match size of target (29) File: /home/antony/Downloads/Problema3 (4)/Problema3/divisor_clock.v Line: 21
+Info (12128): Elaborating entity "acumulador" for hierarchy "acumulador:ac" File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 50
+Info (12128): Elaborating entity "controlador_teclado" for hierarchy "controlador_teclado:teclas" File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 58
+Warning (10235): Verilog HDL Always Construct warning at controlador_teclado.v(25): variable "estado" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_teclado.v Line: 25
+Warning (10235): Verilog HDL Always Construct warning at controlador_teclado.v(30): variable "estado" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_teclado.v Line: 30
+Warning (10235): Verilog HDL Always Construct warning at controlador_teclado.v(40): variable "estado" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_teclado.v Line: 40
+Warning (10235): Verilog HDL Always Construct warning at controlador_teclado.v(50): variable "estado" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_teclado.v Line: 50
+Warning (10240): Verilog HDL Always Construct warning at controlador_teclado.v(24): inferring latch(es) for variable "digito", which holds its previous value in one or more paths through the always construct File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_teclado.v Line: 24
+Warning (10240): Verilog HDL Always Construct warning at controlador_teclado.v(24): inferring latch(es) for variable "state_next", which holds its previous value in one or more paths through the always construct File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_teclado.v Line: 24
+Info (10041): Inferred latch for "state_next.10" at controlador_teclado.v(25) File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_teclado.v Line: 25
+Info (10041): Inferred latch for "state_next.01" at controlador_teclado.v(25) File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_teclado.v Line: 25
+Info (10041): Inferred latch for "state_next.00" at controlador_teclado.v(25) File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_teclado.v Line: 25
+Info (10041): Inferred latch for "digito[0]" at controlador_teclado.v(25) File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_teclado.v Line: 25
+Info (10041): Inferred latch for "digito[1]" at controlador_teclado.v(25) File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_teclado.v Line: 25
+Info (12128): Elaborating entity "gerador_codificador" for hierarchy "gerador_codificador:gerador" File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 65
+Warning (10235): Verilog HDL Always Construct warning at gerador_codificador.v(12): variable "estado" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/antony/Downloads/Problema3 (4)/Problema3/gerador_codificador.v Line: 12
+Warning (10235): Verilog HDL Always Construct warning at gerador_codificador.v(12): variable "tecla" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/antony/Downloads/Problema3 (4)/Problema3/gerador_codificador.v Line: 12
+Warning (10235): Verilog HDL Always Construct warning at gerador_codificador.v(15): variable "tecla" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/antony/Downloads/Problema3 (4)/Problema3/gerador_codificador.v Line: 15
+Warning (10235): Verilog HDL Always Construct warning at gerador_codificador.v(19): variable "tecla" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/antony/Downloads/Problema3 (4)/Problema3/gerador_codificador.v Line: 19
+Warning (10235): Verilog HDL Always Construct warning at gerador_codificador.v(23): variable "tecla" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/antony/Downloads/Problema3 (4)/Problema3/gerador_codificador.v Line: 23
+Warning (10235): Verilog HDL Always Construct warning at gerador_codificador.v(27): variable "tecla" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/antony/Downloads/Problema3 (4)/Problema3/gerador_codificador.v Line: 27
+Warning (10235): Verilog HDL Always Construct warning at gerador_codificador.v(33): variable "tecla" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/antony/Downloads/Problema3 (4)/Problema3/gerador_codificador.v Line: 33
+Warning (10235): Verilog HDL Always Construct warning at gerador_codificador.v(37): variable "tecla" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/antony/Downloads/Problema3 (4)/Problema3/gerador_codificador.v Line: 37
+Warning (10235): Verilog HDL Always Construct warning at gerador_codificador.v(41): variable "tecla" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/antony/Downloads/Problema3 (4)/Problema3/gerador_codificador.v Line: 41
+Warning (10235): Verilog HDL Always Construct warning at gerador_codificador.v(45): variable "tecla" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/antony/Downloads/Problema3 (4)/Problema3/gerador_codificador.v Line: 45
+Warning (10270): Verilog HDL Case Statement warning at gerador_codificador.v(13): incomplete case statement has no default case item File: /home/antony/Downloads/Problema3 (4)/Problema3/gerador_codificador.v Line: 13
+Info (10264): Verilog HDL Case Statement information at gerador_codificador.v(13): all case item expressions in this case statement are onehot File: /home/antony/Downloads/Problema3 (4)/Problema3/gerador_codificador.v Line: 13
+Warning (10240): Verilog HDL Always Construct warning at gerador_codificador.v(11): inferring latch(es) for variable "codigo", which holds its previous value in one or more paths through the always construct File: /home/antony/Downloads/Problema3 (4)/Problema3/gerador_codificador.v Line: 11
+Info (10041): Inferred latch for "codigo[0]" at gerador_codificador.v(11) File: /home/antony/Downloads/Problema3 (4)/Problema3/gerador_codificador.v Line: 11
+Info (10041): Inferred latch for "codigo[1]" at gerador_codificador.v(11) File: /home/antony/Downloads/Problema3 (4)/Problema3/gerador_codificador.v Line: 11
+Info (10041): Inferred latch for "codigo[2]" at gerador_codificador.v(11) File: /home/antony/Downloads/Problema3 (4)/Problema3/gerador_codificador.v Line: 11
+Info (10041): Inferred latch for "codigo[3]" at gerador_codificador.v(11) File: /home/antony/Downloads/Problema3 (4)/Problema3/gerador_codificador.v Line: 11
+Info (12128): Elaborating entity "controlador_memoria" for hierarchy "controlador_memoria:controle_mem" File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 71
+Warning (10240): Verilog HDL Always Construct warning at controlador_memoria.v(10): inferring latch(es) for variable "valor_preco", which holds its previous value in one or more paths through the always construct File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_memoria.v Line: 10
+Info (10041): Inferred latch for "valor_preco[0]" at controlador_memoria.v(10) File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_memoria.v Line: 10
+Info (10041): Inferred latch for "valor_preco[1]" at controlador_memoria.v(10) File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_memoria.v Line: 10
+Info (10041): Inferred latch for "valor_preco[2]" at controlador_memoria.v(10) File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_memoria.v Line: 10
+Info (10041): Inferred latch for "valor_preco[3]" at controlador_memoria.v(10) File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_memoria.v Line: 10
+Info (12128): Elaborating entity "vericador_valor" for hierarchy "vericador_valor:verifica" File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 77
+Warning (10235): Verilog HDL Always Construct warning at vericador_valor.v(11): variable "total" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/antony/Downloads/Problema3 (4)/Problema3/vericador_valor.v Line: 11
+Info (12128): Elaborating entity "controlador_principal" for hierarchy "controlador_principal:controle" File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 87
+Info (12128): Elaborating entity "display_segmentos" for hierarchy "display_segmentos:display" File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 99
+Info (12128): Elaborating entity "decodificador" for hierarchy "display_segmentos:display|decodificador:decodA" File: /home/antony/Downloads/Problema3 (4)/Problema3/display_segmentos.v Line: 113
+Info (12128): Elaborating entity "multiplexador" for hierarchy "multiplexador:mux" File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 105
+Warning (10230): Verilog HDL assignment warning at multiplexador.v(46): truncated value with size 32 to match size of target (3) File: /home/antony/Downloads/Problema3 (4)/Problema3/multiplexador.v Line: 46
+Info (12128): Elaborating entity "multiplexadorSegmentos" for hierarchy "multiplexadorSegmentos:muxSeg" File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 115
+Warning (10235): Verilog HDL Always Construct warning at multiplexadorSegmentos.v(8): variable "segmentosA" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/antony/Downloads/Problema3 (4)/Problema3/multiplexadorSegmentos.v Line: 8
+Warning (10235): Verilog HDL Always Construct warning at multiplexadorSegmentos.v(9): variable "segmentosB" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/antony/Downloads/Problema3 (4)/Problema3/multiplexadorSegmentos.v Line: 9
+Warning (10235): Verilog HDL Always Construct warning at multiplexadorSegmentos.v(10): variable "segmentosC" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/antony/Downloads/Problema3 (4)/Problema3/multiplexadorSegmentos.v Line: 10
+Warning (10235): Verilog HDL Always Construct warning at multiplexadorSegmentos.v(11): variable "segmentosD" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/antony/Downloads/Problema3 (4)/Problema3/multiplexadorSegmentos.v Line: 11
+Info (10264): Verilog HDL Case Statement information at multiplexadorSegmentos.v(7): all case item expressions in this case statement are onehot File: /home/antony/Downloads/Problema3 (4)/Problema3/multiplexadorSegmentos.v Line: 7
+Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13012): Latch estado_anterior[1] has unsafe behavior File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 27
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlador_principal:controle|estado_reg.q0 File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_principal.v Line: 13
+Warning (13012): Latch estado_anterior[0] has unsafe behavior File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 27
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlador_principal:controle|estado_reg.q0 File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_principal.v Line: 13
+Warning (13012): Latch controlador_memoria:controle_mem|valor_preco[0] has unsafe behavior File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_memoria.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal gerador_codificador:gerador|codigo[3] File: /home/antony/Downloads/Problema3 (4)/Problema3/gerador_codificador.v Line: 11
+Warning (13012): Latch controlador_memoria:controle_mem|valor_preco[1] has unsafe behavior File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_memoria.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal gerador_codificador:gerador|codigo[0] File: /home/antony/Downloads/Problema3 (4)/Problema3/gerador_codificador.v Line: 11
+Warning (13012): Latch controlador_memoria:controle_mem|valor_preco[2] has unsafe behavior File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_memoria.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal gerador_codificador:gerador|codigo[0] File: /home/antony/Downloads/Problema3 (4)/Problema3/gerador_codificador.v Line: 11
+Warning (13012): Latch controlador_memoria:controle_mem|valor_preco[3] has unsafe behavior File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_memoria.v Line: 10
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal gerador_codificador:gerador|codigo[0] File: /home/antony/Downloads/Problema3 (4)/Problema3/gerador_codificador.v Line: 11
+Warning (13012): Latch gerador_codificador:gerador|codigo[0] has unsafe behavior File: /home/antony/Downloads/Problema3 (4)/Problema3/gerador_codificador.v Line: 11
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal tecla[0] File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 5
+Warning (13012): Latch gerador_codificador:gerador|codigo[1] has unsafe behavior File: /home/antony/Downloads/Problema3 (4)/Problema3/gerador_codificador.v Line: 11
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal tecla[0] File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 5
+Warning (13012): Latch gerador_codificador:gerador|codigo[2] has unsafe behavior File: /home/antony/Downloads/Problema3 (4)/Problema3/gerador_codificador.v Line: 11
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal tecla[0] File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 5
+Warning (13012): Latch gerador_codificador:gerador|codigo[3] has unsafe behavior File: /home/antony/Downloads/Problema3 (4)/Problema3/gerador_codificador.v Line: 11
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal tecla[0] File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 5
+Warning (13012): Latch controlador_teclado:teclas|state_next.00_112 has unsafe behavior File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_teclado.v Line: 25
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlador_principal:controle|estado_reg.q0 File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_principal.v Line: 13
+Warning (13012): Latch controlador_teclado:teclas|state_next.01_101 has unsafe behavior File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_teclado.v Line: 25
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlador_principal:controle|estado_reg.q0 File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_principal.v Line: 13
+Warning (13012): Latch controlador_teclado:teclas|state_next.10_90 has unsafe behavior File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_teclado.v Line: 25
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal controlador_principal:controle|estado_reg.q0 File: /home/antony/Downloads/Problema3 (4)/Problema3/controlador_principal.v Line: 13
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "segmentos[1]" is stuck at GND File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 8
+    Warning (13410): Pin "segmentos[2]" is stuck at GND File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 8
+    Warning (13410): Pin "segmentos[3]" is stuck at GND File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 8
+    Warning (13410): Pin "segmentos[4]" is stuck at GND File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 8
+    Warning (13410): Pin "segmentos[5]" is stuck at GND File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 8
+    Warning (13410): Pin "segmentos[6]" is stuck at GND File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 8
+    Warning (13410): Pin "segmentos[7]" is stuck at GND File: /home/antony/Downloads/Problema3 (4)/Problema3/circuito_principal.v Line: 8
+Info (17049): 19 registers lost all their fanouts during netlist optimizations.
+Info (21057): Implemented 128 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 7 input pins
+    Info (21059): Implemented 14 output pins
+    Info (21061): Implemented 107 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 73 warnings
+    Info: Peak virtual memory: 339 megabytes
+    Info: Processing ended: Mon Jun 21 23:54:35 2021
+    Info: Elapsed time: 00:01:22
+    Info: Total CPU time (on all processors): 00:00:52
+
+

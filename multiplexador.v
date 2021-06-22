@@ -1,35 +1,40 @@
+/* Modulo do multiplexador, responsavel escolher uma das entradas
+	Criado por: Antony Araujo e Ozenilson Alisson 
+	Data: 18 jun 2021*/
+
 module multiplexador(clk, displays);		
 	input clk;
 	output reg [3:0] displays;
 	
 	reg [2:0] contador;
 	initial contador = 0;	
+	
 	always @ (posedge clk) begin
 		case (contador)
-			3'b000 : begin
+			3'b001 : begin
 				displays[0] = 1'b1;
 				displays[1] = 0;
 				displays[2] = 0;
 				displays[3] = 0;
 			end 
-			3'b001 : begin
+			3'b010 : begin
 				displays[0] = 0;
 				displays[1] = 1'b1;
 				displays[2] = 0;
 				displays[3] = 0;
 			end 
-			3'b010 : begin
+			3'b011 : begin
 				displays[0] = 0;
 				displays[1] = 0;
 				displays[2] = 1'b1;
 				displays[3] = 0;
 			end 
-			3'b011 : begin
+			3'b100 : begin
 				displays[0] = 0;
 				displays[1] = 0;
 				displays[2] = 0;
 				displays[3] = 1'b1;
-				contador = 0;
+				contador = 3'b000;
 			end 			
 			default: begin
 				displays[0] = 0;

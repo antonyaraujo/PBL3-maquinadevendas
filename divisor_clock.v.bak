@@ -1,0 +1,27 @@
+/* Modulo do divisor de clock, responsavel por gerar uma nova frequencia a partir de um clock
+	Criado por: Antony Araujo e Ozenilson Alisson 
+	Data: 18 jun 2021*/
+
+module divisor_clock(clk, saidaMatriz, saidaRegistrador);
+	// Entradas
+		input clk;
+		
+	// Saidas 
+		output saidaMatriz, saidaRegistrador;
+		
+	// Registradores
+	reg [25:0] contador;
+	
+	initial contador = 0;
+	
+	assign saidaMatriz = contador[24]; // 1,4901 Hz [24] -> bit 25
+	assign saidaRegistrador = contador[17]; //  190,73 Hz [17] -> bit 18
+	
+	always @ (posedge clk) begin
+		contador <= contador + 1;
+		if (contador == 26'h3FFFFFF) begin
+			contador <= 26'h0;
+		end		
+	end
+	
+endmodule	

@@ -1,0 +1,155 @@
+/* Modulo do display, responsavel pelas informacoes do painel
+	ou nao igual ao do produto desejado
+	Criado por: Antony Araujo e Ozenilson Alisson 
+	Data: 18 jun 2021*/
+
+
+module display_segmentos(clk, codigo_produto, total, estado,  segmentos0, segmentos1, segmentos2, segmentos3, displays);
+	//Entradas
+	input clk;
+	input [3:0]codigo_produto, total;
+	input [1:0] estado;
+	
+	//Saidas
+	output reg [6:0] segmentos0, segmentos2, segmentos3;
+	output reg [7:0] segmentos1;
+	output reg [3:0] displays;
+	
+	
+	reg[2:0] valor1, valor2, valor3; //registra os valores decodificados das moedas para representacao
+	reg[1:0] t1, t2;    				   //registra os valores digitados pelo usuario para representacao
+	reg[1:0] estado_anterior;			//registra o estado anterior do circuito
+	reg[2:0] numero_err;					//registra o numero referente ao erro gerado 
+	reg[6:0] segmento_aux;				//regista o valor do segmento para inclusao de 1 bit referente ao dp do display de 7 segmentos
+	wire[3:0] fio_displays;			   //fio que liga o cicutio display_segmentos ao circuito multiplexador
+	
+	initial estado_anterior = 2'b00;
+	
+	task decodificador_display; // tafera que indica quais segmentos serao ativados 
+		input [2:0] codigoBCD;
+		output reg[6:0] seg;
+		
+		case(codigoBCD)
+			3'b000: seg = 7'b0111111; // 0 
+			3'b001: seg = 7'b0000110; // 1
+			3'b010: seg = 7'b1011011; // 2
+			3'b011: seg = 7'b1001111; // 3
+			3'b100: seg = 7'b1101101; // 5
+			3'b101: seg = 7'b0000111; // 7
+			3'b110: seg = 7'b1111001; // E
+			3'b111: seg = 7'b0110011; // r
+    	endcase
+	endtask	
+	
+	always @(estado, codigo_produto, total) begin
+		if(estado == 2'b00 & estado_anterior == 2'b01) begin //significa que o produto nao foi encontrado e gera a saida Er 1
+			segmentos0 = 7'b1111001;  //letra E
+			segmentos1 = 8'b00110011; //letra r
+			segmentos2 = 7'b0000000;  //o display 2 permanece apagado
+			
+			numero_err = 3'b001;
+			decodificador_display(numero_err, segmentos3); //display 3
+			
+			estado_anterior = 2'b00;
+		end
+		else if(estado == 2'b00 & estado_anterior == 2'b10) begin //significa que o valor do produto esta incorreto e gera a saida Er 2
+			segmentos0 = 7'b1111001;  //letra E
+			segmentos1 = 8'b00110011; //letra r
+			segmentos2 = 7'b0000000;  //o display 2 permanece apagado
+			
+			numero_err = 3'b010;
+			decodificador_display(numero_err, segmentos3); //display 3
+			
+			estado_anterior = 2'b00; //novo estado anterior
+		end
+		//else begin
+			case(estado)
+				2'b01: begin
+					t1 = {1'b0, codigo_produto[0], codigo_produto[1]};
+					t2 = {1'b0, codigo_produto[2], codigo_produto[3]};
+					
+					segmentos0 = 7'b0000000;  //o display 0 permanece apagado
+					segmentos1 = 8'b00000000; //o display 1 permanece apagado
+					
+					decodificador_display(t1, segmentos2); //display 2
+					decodificador_display(t2, segmentos3); //display 3
+					
+					estado_anterior = 2'b01; //novo estado anterior
+				end	
+				
+				2'b10: begin // mostra o total de moedas
+					case(total)
+						4'b0001: begin	//0,25
+							valor1 = 3'b000;
+							valor2 = 3'b010;
+							valor3 = 3'b101;
+						end
+						4'b0010: begin //0,50
+							valor1 = 3'b000;
+							valor2 = 3'b101;
+							valor3 = 3'b000;
+						end
+						4'b0011: begin //0,75
+							valor1 = 3'b000;
+							valor2 = 3'b111;
+							valor3 = 3'b101;
+						end
+						4'b0100: begin //1,00
+							valor1 = 3'b001;
+							valor2 = 3'b000;
+							valor3 = 3'b000;
+						end
+						4'b0101: begin //1,25
+							valor1 = 3'b001;
+							valor2 = 3'b010;
+							valor3 = 3'b101;
+						end
+						4'b0110: begin //1,50
+							valor1 = 3'b001;
+							valor2 = 3'b101;
+							valor3 = 3'b000;
+						end
+						4'b0111: begin //1,75
+							valor1 = 3'b001;
+							valor2 = 3'b111;
+							valor3 = 3'b101;
+						end
+						4'b1000: begin //2,00
+							valor1 = 3'b000;
+							valor2 = 3'b010;
+							valor3 = 3'b101;
+						end
+					endcase	
+					segmentos0 = 7'b0000000;//display 0 estara desativado
+					
+					decodificador_display(valor1, segmento_aux); 
+					segmentos1 = {1'b1, segmento_aux};     //display 1 possui . (dp) para a exibicao de valores
+					
+					decodificador_display(valor2, segmentos2); //display 2
+					
+					decodificador_display(valor3, segmentos3); //display 3
+					
+					estado_anterior = 2'b10; //novo estado anterior
+				end	
+				
+				default begin
+					//todos os displays permanecem apagados
+					segmentos0 = 7'b0000000;
+					
+					segmentos1 = 8'b00000000;
+					
+					segmentos2 = 7'b0000000;
+					
+					segmentos3 = 7'b0000000;
+					
+					estado_anterior = 2'b00;
+				end
+			endcase
+		//end
+	end
+
+	/*multiplexador mult(
+		.clk(clk), 
+		.displays(displays));*/
+
+endmodule

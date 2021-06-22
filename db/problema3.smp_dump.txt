@@ -1,0 +1,25 @@
+
+State Machine - |circuito_principal|controlador_principal:controle|estado_reg
+Name estado_reg.q3 estado_reg.q2 estado_reg.q1 estado_reg.q0 
+estado_reg.q0 0 0 0 0 
+estado_reg.q1 0 0 1 1 
+estado_reg.q2 0 1 0 1 
+estado_reg.q3 1 0 0 1 
+
+State Machine - |circuito_principal|controlador_teclado:teclas|state_reg
+Name state_reg.espera state_reg.10 state_reg.01 
+state_reg.espera 0 0 0 
+state_reg.01 1 0 1 
+state_reg.10 1 1 0 
+
+State Machine - |circuito_principal|acumulador:ac|state_reg
+Name state_reg.0111 state_reg.0110 state_reg.0101 state_reg.0100 state_reg.0011 state_reg.0010 state_reg.0001 state_reg.0000 state_reg.1000 
+state_reg.0000 0 0 0 0 0 0 0 0 0 
+state_reg.0001 0 0 0 0 0 0 1 1 0 
+state_reg.0010 0 0 0 0 0 1 0 1 0 
+state_reg.0011 0 0 0 0 1 0 0 1 0 
+state_reg.0100 0 0 0 1 0 0 0 1 0 
+state_reg.0101 0 0 1 0 0 0 0 1 0 
+state_reg.0110 0 1 0 0 0 0 0 1 0 
+state_reg.0111 1 0 0 0 0 0 0 1 0 
+state_reg.1000 0 0 0 0 0 0 0 1 1 

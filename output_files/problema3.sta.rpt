@@ -1,0 +1,833 @@
+Timing Analyzer report for problema3
+Mon Jun 21 23:56:28 2021
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Parallel Compilation
+  4. Clocks
+  5. Fmax Summary
+  6. Setup Summary
+  7. Hold Summary
+  8. Recovery Summary
+  9. Removal Summary
+ 10. Minimum Pulse Width Summary
+ 11. Setup: 'clk'
+ 12. Setup: 'gerador_codificador:gerador|codigo[0]'
+ 13. Setup: 'controlador_principal:controle|estado_reg.q0'
+ 14. Setup: 'tecla[0]'
+ 15. Hold: 'controlador_principal:controle|estado_reg.q0'
+ 16. Hold: 'gerador_codificador:gerador|codigo[0]'
+ 17. Hold: 'clk'
+ 18. Hold: 'tecla[0]'
+ 19. Recovery: 'clk'
+ 20. Removal: 'clk'
+ 21. Setup Transfers
+ 22. Hold Transfers
+ 23. Recovery Transfers
+ 24. Removal Transfers
+ 25. Report TCCS
+ 26. Report RSKM
+ 27. Unconstrained Paths Summary
+ 28. Clock Status Summary
+ 29. Unconstrained Input Ports
+ 30. Unconstrained Output Ports
+ 31. Unconstrained Input Ports
+ 32. Unconstrained Output Ports
+ 33. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-----------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                     ;
++-----------------------+-----------------------------------------------------+
+; Quartus Prime Version ; Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Timing Analyzer       ; Legacy Timing Analyzer                              ;
+; Revision Name         ; problema3                                           ;
+; Device Family         ; MAX II                                              ;
+; Device Name           ; EPM240T100C5                                        ;
+; Timing Models         ; Final                                               ;
+; Delay Model           ; Slow Model                                          ;
+; Rise/Fall Delays      ; Unavailable                                         ;
++-----------------------+-----------------------------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 2           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 2           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                                                                                                     ;
++----------------------------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+--------------------------------------------------+
+; Clock Name                                   ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets                                          ;
++----------------------------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+--------------------------------------------------+
+; clk                                          ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clk }                                          ;
+; controlador_principal:controle|estado_reg.q0 ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { controlador_principal:controle|estado_reg.q0 } ;
+; gerador_codificador:gerador|codigo[0]        ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { gerador_codificador:gerador|codigo[0] }        ;
+; tecla[0]                                     ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { tecla[0] }                                     ;
++----------------------------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+--------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------+
+; Fmax Summary                                                                                          ;
++------------+-----------------+----------------------------------------------+-------------------------+
+; Fmax       ; Restricted Fmax ; Clock Name                                   ; Note                    ;
++------------+-----------------+----------------------------------------------+-------------------------+
+; INF MHz    ; 130.51 MHz      ; gerador_codificador:gerador|codigo[0]        ; limit due to hold check ;
+; 137.08 MHz ; 137.08 MHz      ; clk                                          ;                         ;
+; 242.37 MHz ; 242.37 MHz      ; tecla[0]                                     ;                         ;
+; 732.06 MHz ; 104.82 MHz      ; controlador_principal:controle|estado_reg.q0 ; limit due to hold check ;
++------------+-----------------+----------------------------------------------+-------------------------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++------------------------------------------------------------------------+
+; Setup Summary                                                          ;
++----------------------------------------------+---------+---------------+
+; Clock                                        ; Slack   ; End Point TNS ;
++----------------------------------------------+---------+---------------+
+; clk                                          ; -11.257 ; -217.804      ;
+; gerador_codificador:gerador|codigo[0]        ; -7.929  ; -27.699       ;
+; controlador_principal:controle|estado_reg.q0 ; -4.204  ; -24.950       ;
+; tecla[0]                                     ; -1.563  ; -4.960        ;
++----------------------------------------------+---------+---------------+
+
+
++-----------------------------------------------------------------------+
+; Hold Summary                                                          ;
++----------------------------------------------+--------+---------------+
+; Clock                                        ; Slack  ; End Point TNS ;
++----------------------------------------------+--------+---------------+
+; controlador_principal:controle|estado_reg.q0 ; -4.770 ; -12.653       ;
+; gerador_codificador:gerador|codigo[0]        ; -3.831 ; -13.883       ;
+; clk                                          ; -1.035 ; -3.714        ;
+; tecla[0]                                     ; -0.041 ; -0.053        ;
++----------------------------------------------+--------+---------------+
+
+
++--------------------------------+
+; Recovery Summary               ;
++-------+--------+---------------+
+; Clock ; Slack  ; End Point TNS ;
++-------+--------+---------------+
+; clk   ; -3.998 ; -41.811       ;
++-------+--------+---------------+
+
+
++-------------------------------+
+; Removal Summary               ;
++-------+-------+---------------+
+; Clock ; Slack ; End Point TNS ;
++-------+-------+---------------+
+; clk   ; 2.979 ; 0.000         ;
++-------+-------+---------------+
+
+
++-----------------------------------------------------------------------+
+; Minimum Pulse Width Summary                                           ;
++----------------------------------------------+--------+---------------+
+; Clock                                        ; Slack  ; End Point TNS ;
++----------------------------------------------+--------+---------------+
+; clk                                          ; -2.289 ; -2.289        ;
+; tecla[0]                                     ; -2.289 ; -2.289        ;
+; controlador_principal:controle|estado_reg.q0 ; -0.269 ; -2.690        ;
+; gerador_codificador:gerador|codigo[0]        ; 0.500  ; 0.000         ;
++----------------------------------------------+--------+---------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'clk'                                                                                                                                                                                                   ;
++---------+-------------------------------------------------+----------------------------------------------+----------------------------------------------+-------------+--------------+------------+------------+
+; Slack   ; From Node                                       ; To Node                                      ; Launch Clock                                 ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++---------+-------------------------------------------------+----------------------------------------------+----------------------------------------------+-------------+--------------+------------+------------+
+; -11.257 ; gerador_codificador:gerador|codigo[3]           ; controlador_principal:controle|estado_reg.q0 ; tecla[0]                                     ; clk         ; 0.500        ; -5.390     ; 6.034      ;
+; -10.716 ; gerador_codificador:gerador|codigo[2]           ; controlador_principal:controle|estado_reg.q0 ; tecla[0]                                     ; clk         ; 0.500        ; -5.392     ; 5.491      ;
+; -9.908  ; gerador_codificador:gerador|codigo[3]           ; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q0 ; clk         ; 0.500        ; -4.041     ; 6.034      ;
+; -9.695  ; gerador_codificador:gerador|codigo[1]           ; controlador_principal:controle|estado_reg.q0 ; tecla[0]                                     ; clk         ; 0.500        ; -5.370     ; 4.492      ;
+; -9.686  ; gerador_codificador:gerador|codigo[3]           ; controlador_principal:controle|estado_reg.q2 ; tecla[0]                                     ; clk         ; 0.500        ; -5.390     ; 4.463      ;
+; -9.367  ; gerador_codificador:gerador|codigo[2]           ; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q0 ; clk         ; 0.500        ; -4.043     ; 5.491      ;
+; -9.145  ; gerador_codificador:gerador|codigo[2]           ; controlador_principal:controle|estado_reg.q2 ; tecla[0]                                     ; clk         ; 0.500        ; -5.392     ; 3.920      ;
+; -8.870  ; gerador_codificador:gerador|codigo[3]           ; display_segmentos:display|codigoC[1]         ; tecla[0]                                     ; clk         ; 0.500        ; -5.390     ; 3.647      ;
+; -8.346  ; gerador_codificador:gerador|codigo[1]           ; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q0 ; clk         ; 0.500        ; -4.021     ; 4.492      ;
+; -8.337  ; gerador_codificador:gerador|codigo[3]           ; controlador_principal:controle|estado_reg.q2 ; controlador_principal:controle|estado_reg.q0 ; clk         ; 0.500        ; -4.041     ; 4.463      ;
+; -8.124  ; gerador_codificador:gerador|codigo[1]           ; controlador_principal:controle|estado_reg.q2 ; tecla[0]                                     ; clk         ; 0.500        ; -5.370     ; 2.921      ;
+; -7.796  ; gerador_codificador:gerador|codigo[2]           ; controlador_principal:controle|estado_reg.q2 ; controlador_principal:controle|estado_reg.q0 ; clk         ; 0.500        ; -4.043     ; 3.920      ;
+; -7.722  ; gerador_codificador:gerador|codigo[2]           ; display_segmentos:display|codigoC[0]         ; tecla[0]                                     ; clk         ; 0.500        ; -5.392     ; 2.497      ;
+; -7.568  ; gerador_codificador:gerador|codigo[1]           ; display_segmentos:display|codigoD[1]         ; tecla[0]                                     ; clk         ; 0.500        ; -5.370     ; 2.365      ;
+; -7.521  ; gerador_codificador:gerador|codigo[3]           ; display_segmentos:display|codigoC[1]         ; controlador_principal:controle|estado_reg.q0 ; clk         ; 0.500        ; -4.041     ; 3.647      ;
+; -6.994  ; controlador_memoria:controle_mem|valor_preco[1] ; controlador_principal:controle|estado_reg.q0 ; gerador_codificador:gerador|codigo[0]        ; clk         ; 1.000        ; -2.750     ; 4.911      ;
+; -6.775  ; gerador_codificador:gerador|codigo[1]           ; controlador_principal:controle|estado_reg.q2 ; controlador_principal:controle|estado_reg.q0 ; clk         ; 0.500        ; -4.021     ; 2.921      ;
+; -6.657  ; controlador_memoria:controle_mem|valor_preco[0] ; controlador_principal:controle|estado_reg.q0 ; gerador_codificador:gerador|codigo[0]        ; clk         ; 1.000        ; -2.753     ; 4.571      ;
+; -6.566  ; controlador_memoria:controle_mem|valor_preco[1] ; controlador_principal:controle|estado_reg.q3 ; gerador_codificador:gerador|codigo[0]        ; clk         ; 1.000        ; -2.750     ; 4.483      ;
+; -6.373  ; gerador_codificador:gerador|codigo[2]           ; display_segmentos:display|codigoC[0]         ; controlador_principal:controle|estado_reg.q0 ; clk         ; 0.500        ; -4.043     ; 2.497      ;
+; -6.295  ; acumulador:ac|state_reg.0001                    ; controlador_principal:controle|estado_reg.q0 ; clk                                          ; clk         ; 1.000        ; 0.000      ; 6.962      ;
+; -6.263  ; acumulador:ac|state_reg.0110                    ; controlador_principal:controle|estado_reg.q0 ; clk                                          ; clk         ; 1.000        ; 0.000      ; 6.930      ;
+; -6.229  ; controlador_memoria:controle_mem|valor_preco[0] ; controlador_principal:controle|estado_reg.q3 ; gerador_codificador:gerador|codigo[0]        ; clk         ; 1.000        ; -2.753     ; 4.143      ;
+; -6.219  ; gerador_codificador:gerador|codigo[1]           ; display_segmentos:display|codigoD[1]         ; controlador_principal:controle|estado_reg.q0 ; clk         ; 0.500        ; -4.021     ; 2.365      ;
+; -6.094  ; acumulador:ac|state_reg.0111                    ; controlador_principal:controle|estado_reg.q0 ; clk                                          ; clk         ; 1.000        ; 0.000      ; 6.761      ;
+; -6.087  ; acumulador:ac|state_reg.0011                    ; controlador_principal:controle|estado_reg.q0 ; clk                                          ; clk         ; 1.000        ; 0.000      ; 6.754      ;
+; -5.942  ; controlador_memoria:controle_mem|valor_preco[2] ; controlador_principal:controle|estado_reg.q0 ; gerador_codificador:gerador|codigo[0]        ; clk         ; 1.000        ; -2.751     ; 3.858      ;
+; -5.941  ; acumulador:ac|state_reg.0101                    ; controlador_principal:controle|estado_reg.q0 ; clk                                          ; clk         ; 1.000        ; 0.000      ; 6.608      ;
+; -5.867  ; acumulador:ac|state_reg.0001                    ; controlador_principal:controle|estado_reg.q3 ; clk                                          ; clk         ; 1.000        ; 0.000      ; 6.534      ;
+; -5.835  ; acumulador:ac|state_reg.0110                    ; controlador_principal:controle|estado_reg.q3 ; clk                                          ; clk         ; 1.000        ; 0.000      ; 6.502      ;
+; -5.787  ; acumulador:ac|state_reg.0111                    ; acumulador:ac|state_reg.0000                 ; clk                                          ; clk         ; 1.000        ; 0.000      ; 6.454      ;
+; -5.752  ; controlador_memoria:controle_mem|valor_preco[3] ; controlador_principal:controle|estado_reg.q0 ; gerador_codificador:gerador|codigo[0]        ; clk         ; 1.000        ; -2.646     ; 3.773      ;
+; -5.691  ; acumulador:ac|state_reg.0010                    ; controlador_principal:controle|estado_reg.q0 ; clk                                          ; clk         ; 1.000        ; 0.000      ; 6.358      ;
+; -5.666  ; acumulador:ac|state_reg.0111                    ; controlador_principal:controle|estado_reg.q3 ; clk                                          ; clk         ; 1.000        ; 0.000      ; 6.333      ;
+; -5.659  ; acumulador:ac|state_reg.0011                    ; controlador_principal:controle|estado_reg.q3 ; clk                                          ; clk         ; 1.000        ; 0.000      ; 6.326      ;
+; -5.514  ; controlador_memoria:controle_mem|valor_preco[2] ; controlador_principal:controle|estado_reg.q3 ; gerador_codificador:gerador|codigo[0]        ; clk         ; 1.000        ; -2.751     ; 3.430      ;
+; -5.513  ; acumulador:ac|state_reg.0101                    ; controlador_principal:controle|estado_reg.q3 ; clk                                          ; clk         ; 1.000        ; 0.000      ; 6.180      ;
+; -5.383  ; divisor_clock:comb_16|contador[17]              ; controlador_principal:controle|estado_reg.q0 ; clk                                          ; clk         ; 1.000        ; 0.000      ; 6.050      ;
+; -5.324  ; controlador_memoria:controle_mem|valor_preco[3] ; controlador_principal:controle|estado_reg.q3 ; gerador_codificador:gerador|codigo[0]        ; clk         ; 1.000        ; -2.646     ; 3.345      ;
+; -5.263  ; acumulador:ac|state_reg.0010                    ; controlador_principal:controle|estado_reg.q3 ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.930      ;
+; -5.133  ; controlador_principal:controle|estado_reg.q2    ; display_segmentos:display|codigoD[3]         ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.800      ;
+; -5.133  ; controlador_principal:controle|estado_reg.q2    ; display_segmentos:display|codigoB[1]         ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.800      ;
+; -5.133  ; controlador_principal:controle|estado_reg.q2    ; display_segmentos:display|codigoC[0]         ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.800      ;
+; -5.133  ; controlador_principal:controle|estado_reg.q2    ; display_segmentos:display|codigoC[1]         ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.800      ;
+; -5.133  ; controlador_principal:controle|estado_reg.q2    ; display_segmentos:display|codigoC[2]         ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.800      ;
+; -5.133  ; controlador_principal:controle|estado_reg.q2    ; display_segmentos:display|codigoD[0]         ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.800      ;
+; -5.133  ; controlador_principal:controle|estado_reg.q2    ; display_segmentos:display|codigoD[2]         ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.800      ;
+; -4.980  ; acumulador:ac|state_reg.0100                    ; controlador_principal:controle|estado_reg.q0 ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.647      ;
+; -4.714  ; controlador_principal:controle|estado_reg.q2    ; display_segmentos:display|codigoB[0]         ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.381      ;
+; -4.671  ; acumulador:ac|state_reg.0110                    ; acumulador:ac|state_reg.1000                 ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.338      ;
+; -4.651  ; acumulador:ac|state_reg.1000                    ; controlador_principal:controle|estado_reg.q0 ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.318      ;
+; -4.587  ; acumulador:ac|state_reg.0100                    ; acumulador:ac|state_reg.0110                 ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.254      ;
+; -4.552  ; acumulador:ac|state_reg.0100                    ; controlador_principal:controle|estado_reg.q3 ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.219      ;
+; -4.500  ; acumulador:ac|state_reg.0010                    ; acumulador:ac|state_reg.0110                 ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.167      ;
+; -4.429  ; acumulador:ac|state_reg.0001                    ; display_segmentos:display|codigoD[0]         ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.096      ;
+; -4.418  ; acumulador:ac|state_reg.0001                    ; display_segmentos:display|codigoC[1]         ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.085      ;
+; -4.374  ; controlador_principal:controle|estado_reg.q1    ; display_segmentos:display|codigoD[3]         ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.041      ;
+; -4.374  ; controlador_principal:controle|estado_reg.q1    ; display_segmentos:display|codigoB[1]         ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.041      ;
+; -4.374  ; controlador_principal:controle|estado_reg.q1    ; display_segmentos:display|codigoC[0]         ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.041      ;
+; -4.374  ; controlador_principal:controle|estado_reg.q1    ; display_segmentos:display|codigoC[1]         ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.041      ;
+; -4.374  ; controlador_principal:controle|estado_reg.q1    ; display_segmentos:display|codigoC[2]         ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.041      ;
+; -4.374  ; controlador_principal:controle|estado_reg.q1    ; display_segmentos:display|codigoD[0]         ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.041      ;
+; -4.374  ; controlador_principal:controle|estado_reg.q1    ; display_segmentos:display|codigoD[2]         ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.041      ;
+; -4.343  ; controlador_principal:controle|estado_reg.q1    ; controlador_principal:controle|estado_reg.q0 ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.010      ;
+; -4.340  ; multiplexador:mux|contador[1]                   ; divisor_clock:comb_16|contador[13]           ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.007      ;
+; -4.340  ; multiplexador:mux|contador[1]                   ; divisor_clock:comb_16|contador[12]           ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.007      ;
+; -4.340  ; multiplexador:mux|contador[1]                   ; divisor_clock:comb_16|contador[11]           ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.007      ;
+; -4.340  ; multiplexador:mux|contador[1]                   ; divisor_clock:comb_16|contador[10]           ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.007      ;
+; -4.340  ; multiplexador:mux|contador[1]                   ; divisor_clock:comb_16|contador[9]            ; clk                                          ; clk         ; 1.000        ; 0.000      ; 5.007      ;
+; -4.327  ; multiplexador:mux|contador[1]                   ; divisor_clock:comb_16|contador[17]           ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.994      ;
+; -4.327  ; multiplexador:mux|contador[1]                   ; divisor_clock:comb_16|contador[16]           ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.994      ;
+; -4.327  ; multiplexador:mux|contador[1]                   ; divisor_clock:comb_16|contador[15]           ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.994      ;
+; -4.327  ; multiplexador:mux|contador[1]                   ; divisor_clock:comb_16|contador[14]           ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.994      ;
+; -4.223  ; acumulador:ac|state_reg.1000                    ; controlador_principal:controle|estado_reg.q3 ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.890      ;
+; -4.221  ; acumulador:ac|state_reg.0011                    ; display_segmentos:display|codigoD[0]         ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.888      ;
+; -4.213  ; controlador_principal:controle|estado_reg.q3    ; controlador_principal:controle|estado_reg.q3 ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.880      ;
+; -4.210  ; acumulador:ac|state_reg.0011                    ; display_segmentos:display|codigoC[1]         ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.877      ;
+; -4.182  ; acumulador:ac|state_reg.0010                    ; acumulador:ac|state_reg.0100                 ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.849      ;
+; -4.094  ; acumulador:ac|state_reg.0110                    ; acumulador:ac|state_reg.0000                 ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.761      ;
+; -4.075  ; acumulador:ac|state_reg.0101                    ; display_segmentos:display|codigoD[0]         ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.742      ;
+; -4.069  ; acumulador:ac|state_reg.0110                    ; display_segmentos:display|codigoC[0]         ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.736      ;
+; -4.069  ; acumulador:ac|state_reg.0111                    ; display_segmentos:display|codigoD[0]         ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.736      ;
+; -4.064  ; acumulador:ac|state_reg.0101                    ; display_segmentos:display|codigoC[1]         ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.731      ;
+; -4.058  ; acumulador:ac|state_reg.0111                    ; display_segmentos:display|codigoC[1]         ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.725      ;
+; -4.046  ; acumulador:ac|state_reg.0101                    ; acumulador:ac|state_reg.0000                 ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.713      ;
+; -3.973  ; divisor_clock:comb_16|contador[4]               ; divisor_clock:comb_16|contador[13]           ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.640      ;
+; -3.973  ; divisor_clock:comb_16|contador[4]               ; divisor_clock:comb_16|contador[12]           ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.640      ;
+; -3.973  ; divisor_clock:comb_16|contador[4]               ; divisor_clock:comb_16|contador[11]           ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.640      ;
+; -3.973  ; divisor_clock:comb_16|contador[4]               ; divisor_clock:comb_16|contador[10]           ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.640      ;
+; -3.973  ; divisor_clock:comb_16|contador[4]               ; divisor_clock:comb_16|contador[9]            ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.640      ;
+; -3.960  ; divisor_clock:comb_16|contador[4]               ; divisor_clock:comb_16|contador[17]           ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.627      ;
+; -3.960  ; divisor_clock:comb_16|contador[4]               ; divisor_clock:comb_16|contador[16]           ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.627      ;
+; -3.960  ; divisor_clock:comb_16|contador[4]               ; divisor_clock:comb_16|contador[15]           ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.627      ;
+; -3.960  ; divisor_clock:comb_16|contador[4]               ; divisor_clock:comb_16|contador[14]           ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.627      ;
+; -3.955  ; controlador_principal:controle|estado_reg.q1    ; display_segmentos:display|codigoB[0]         ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.622      ;
+; -3.931  ; controlador_principal:controle|estado_reg.q1    ; display_segmentos:display|codigoD[1]         ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.598      ;
+; -3.900  ; acumulador:ac|state_reg.0111                    ; display_segmentos:display|codigoC[0]         ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.567      ;
+; -3.894  ; acumulador:ac|state_reg.0010                    ; acumulador:ac|state_reg.0010                 ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.561      ;
+; -3.851  ; divisor_clock:comb_16|contador[5]               ; divisor_clock:comb_16|contador[13]           ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.518      ;
+; -3.851  ; divisor_clock:comb_16|contador[5]               ; divisor_clock:comb_16|contador[12]           ; clk                                          ; clk         ; 1.000        ; 0.000      ; 4.518      ;
++---------+-------------------------------------------------+----------------------------------------------+----------------------------------------------+-------------+--------------+------------+------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'gerador_codificador:gerador|codigo[0]'                                                                                                                                                                                   ;
++--------+---------------------------------------+-------------------------------------------------+----------------------------------------------+---------------------------------------+--------------+------------+------------+
+; Slack  ; From Node                             ; To Node                                         ; Launch Clock                                 ; Latch Clock                           ; Relationship ; Clock Skew ; Data Delay ;
++--------+---------------------------------------+-------------------------------------------------+----------------------------------------------+---------------------------------------+--------------+------------+------------+
+; -7.929 ; gerador_codificador:gerador|codigo[3] ; controlador_memoria:controle_mem|valor_preco[0] ; tecla[0]                                     ; gerador_codificador:gerador|codigo[0] ; 0.500        ; -2.637     ; 2.303      ;
+; -7.500 ; gerador_codificador:gerador|codigo[1] ; controlador_memoria:controle_mem|valor_preco[0] ; tecla[0]                                     ; gerador_codificador:gerador|codigo[0] ; 0.500        ; -2.617     ; 1.894      ;
+; -7.044 ; gerador_codificador:gerador|codigo[3] ; controlador_memoria:controle_mem|valor_preco[2] ; tecla[0]                                     ; gerador_codificador:gerador|codigo[0] ; 0.500        ; -2.639     ; 2.882      ;
+; -6.794 ; gerador_codificador:gerador|codigo[2] ; controlador_memoria:controle_mem|valor_preco[2] ; tecla[0]                                     ; gerador_codificador:gerador|codigo[0] ; 0.500        ; -2.641     ; 2.630      ;
+; -6.625 ; gerador_codificador:gerador|codigo[3] ; controlador_memoria:controle_mem|valor_preco[1] ; tecla[0]                                     ; gerador_codificador:gerador|codigo[0] ; 0.500        ; -2.640     ; 2.479      ;
+; -6.580 ; gerador_codificador:gerador|codigo[3] ; controlador_memoria:controle_mem|valor_preco[0] ; controlador_principal:controle|estado_reg.q0 ; gerador_codificador:gerador|codigo[0] ; 0.500        ; -1.288     ; 2.303      ;
+; -6.448 ; gerador_codificador:gerador|codigo[1] ; controlador_memoria:controle_mem|valor_preco[2] ; tecla[0]                                     ; gerador_codificador:gerador|codigo[0] ; 0.500        ; -2.619     ; 2.306      ;
+; -6.376 ; gerador_codificador:gerador|codigo[2] ; controlador_memoria:controle_mem|valor_preco[1] ; tecla[0]                                     ; gerador_codificador:gerador|codigo[0] ; 0.500        ; -2.642     ; 2.228      ;
+; -6.151 ; gerador_codificador:gerador|codigo[1] ; controlador_memoria:controle_mem|valor_preco[0] ; controlador_principal:controle|estado_reg.q0 ; gerador_codificador:gerador|codigo[0] ; 0.500        ; -1.268     ; 1.894      ;
+; -6.101 ; gerador_codificador:gerador|codigo[2] ; controlador_memoria:controle_mem|valor_preco[3] ; tecla[0]                                     ; gerador_codificador:gerador|codigo[0] ; 0.500        ; -2.746     ; 1.821      ;
+; -6.027 ; gerador_codificador:gerador|codigo[1] ; controlador_memoria:controle_mem|valor_preco[1] ; tecla[0]                                     ; gerador_codificador:gerador|codigo[0] ; 0.500        ; -2.620     ; 1.901      ;
+; -5.695 ; gerador_codificador:gerador|codigo[3] ; controlador_memoria:controle_mem|valor_preco[2] ; controlador_principal:controle|estado_reg.q0 ; gerador_codificador:gerador|codigo[0] ; 0.500        ; -1.290     ; 2.882      ;
+; -5.445 ; gerador_codificador:gerador|codigo[2] ; controlador_memoria:controle_mem|valor_preco[2] ; controlador_principal:controle|estado_reg.q0 ; gerador_codificador:gerador|codigo[0] ; 0.500        ; -1.292     ; 2.630      ;
+; -5.288 ; gerador_codificador:gerador|codigo[3] ; controlador_memoria:controle_mem|valor_preco[3] ; tecla[0]                                     ; gerador_codificador:gerador|codigo[0] ; 0.500        ; -2.744     ; 1.010      ;
+; -5.276 ; gerador_codificador:gerador|codigo[3] ; controlador_memoria:controle_mem|valor_preco[1] ; controlador_principal:controle|estado_reg.q0 ; gerador_codificador:gerador|codigo[0] ; 0.500        ; -1.291     ; 2.479      ;
+; -5.099 ; gerador_codificador:gerador|codigo[1] ; controlador_memoria:controle_mem|valor_preco[2] ; controlador_principal:controle|estado_reg.q0 ; gerador_codificador:gerador|codigo[0] ; 0.500        ; -1.270     ; 2.306      ;
+; -5.027 ; gerador_codificador:gerador|codigo[2] ; controlador_memoria:controle_mem|valor_preco[1] ; controlador_principal:controle|estado_reg.q0 ; gerador_codificador:gerador|codigo[0] ; 0.500        ; -1.293     ; 2.228      ;
+; -4.752 ; gerador_codificador:gerador|codigo[2] ; controlador_memoria:controle_mem|valor_preco[3] ; controlador_principal:controle|estado_reg.q0 ; gerador_codificador:gerador|codigo[0] ; 0.500        ; -1.397     ; 1.821      ;
+; -4.678 ; gerador_codificador:gerador|codigo[1] ; controlador_memoria:controle_mem|valor_preco[1] ; controlador_principal:controle|estado_reg.q0 ; gerador_codificador:gerador|codigo[0] ; 0.500        ; -1.271     ; 1.901      ;
+; -3.939 ; gerador_codificador:gerador|codigo[3] ; controlador_memoria:controle_mem|valor_preco[3] ; controlador_principal:controle|estado_reg.q0 ; gerador_codificador:gerador|codigo[0] ; 0.500        ; -1.395     ; 1.010      ;
+; 0.503  ; gerador_codificador:gerador|codigo[0] ; controlador_memoria:controle_mem|valor_preco[0] ; gerador_codificador:gerador|codigo[0]        ; gerador_codificador:gerador|codigo[0] ; 0.500        ; 6.101      ; 2.609      ;
+; 1.003  ; gerador_codificador:gerador|codigo[0] ; controlador_memoria:controle_mem|valor_preco[0] ; gerador_codificador:gerador|codigo[0]        ; gerador_codificador:gerador|codigo[0] ; 1.000        ; 6.101      ; 2.609      ;
+; 1.555  ; gerador_codificador:gerador|codigo[0] ; controlador_memoria:controle_mem|valor_preco[2] ; gerador_codificador:gerador|codigo[0]        ; gerador_codificador:gerador|codigo[0] ; 0.500        ; 6.099      ; 3.021      ;
+; 1.976  ; gerador_codificador:gerador|codigo[0] ; controlador_memoria:controle_mem|valor_preco[1] ; gerador_codificador:gerador|codigo[0]        ; gerador_codificador:gerador|codigo[0] ; 0.500        ; 6.098      ; 2.616      ;
+; 2.055  ; gerador_codificador:gerador|codigo[0] ; controlador_memoria:controle_mem|valor_preco[2] ; gerador_codificador:gerador|codigo[0]        ; gerador_codificador:gerador|codigo[0] ; 1.000        ; 6.099      ; 3.021      ;
+; 2.297  ; gerador_codificador:gerador|codigo[0] ; controlador_memoria:controle_mem|valor_preco[3] ; gerador_codificador:gerador|codigo[0]        ; gerador_codificador:gerador|codigo[0] ; 0.500        ; 5.994      ; 2.163      ;
+; 2.476  ; gerador_codificador:gerador|codigo[0] ; controlador_memoria:controle_mem|valor_preco[1] ; gerador_codificador:gerador|codigo[0]        ; gerador_codificador:gerador|codigo[0] ; 1.000        ; 6.098      ; 2.616      ;
+; 2.797  ; gerador_codificador:gerador|codigo[0] ; controlador_memoria:controle_mem|valor_preco[3] ; gerador_codificador:gerador|codigo[0]        ; gerador_codificador:gerador|codigo[0] ; 1.000        ; 5.994      ; 2.163      ;
++--------+---------------------------------------+-------------------------------------------------+----------------------------------------------+---------------------------------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'controlador_principal:controle|estado_reg.q0'                                                                                                                                                                                       ;
++--------+----------------------------------------------+----------------------------------------------+----------------------------------------------+----------------------------------------------+--------------+------------+------------+
+; Slack  ; From Node                                    ; To Node                                      ; Launch Clock                                 ; Latch Clock                                  ; Relationship ; Clock Skew ; Data Delay ;
++--------+----------------------------------------------+----------------------------------------------+----------------------------------------------+----------------------------------------------+--------------+------------+------------+
+; -4.204 ; controlador_teclado:teclas|state_reg.01      ; controlador_teclado:teclas|digito[1]         ; clk                                          ; controlador_principal:controle|estado_reg.q0 ; 1.000        ; -0.504     ; 2.330      ;
+; -3.179 ; controlador_teclado:teclas|state_reg.espera  ; controlador_teclado:teclas|digito[0]         ; clk                                          ; controlador_principal:controle|estado_reg.q0 ; 1.000        ; -0.683     ; 1.850      ;
+; -3.171 ; tecla[0]                                     ; gerador_codificador:gerador|codigo[3]        ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; 0.500        ; 7.130      ; 9.145      ;
+; -3.037 ; tecla[0]                                     ; gerador_codificador:gerador|codigo[1]        ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; 0.500        ; 7.110      ; 9.154      ;
+; -2.671 ; tecla[0]                                     ; gerador_codificador:gerador|codigo[3]        ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; 1.000        ; 7.130      ; 9.145      ;
+; -2.608 ; tecla[0]                                     ; gerador_codificador:gerador|codigo[0]        ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; 0.500        ; 7.111      ; 8.707      ;
+; -2.576 ; tecla[0]                                     ; gerador_codificador:gerador|codigo[2]        ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; 0.500        ; 7.132      ; 8.699      ;
+; -2.537 ; tecla[0]                                     ; gerador_codificador:gerador|codigo[1]        ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; 1.000        ; 7.110      ; 9.154      ;
+; -2.108 ; tecla[0]                                     ; gerador_codificador:gerador|codigo[0]        ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; 1.000        ; 7.111      ; 8.707      ;
+; -2.093 ; tecla[0]                                     ; controlador_teclado:teclas|state_next.10_90  ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; 0.500        ; 6.415      ; 7.186      ;
+; -2.076 ; tecla[0]                                     ; gerador_codificador:gerador|codigo[2]        ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; 1.000        ; 7.132      ; 8.699      ;
+; -2.072 ; tecla[0]                                     ; controlador_teclado:teclas|state_next.01_101 ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; 0.500        ; 6.421      ; 7.171      ;
+; -1.975 ; tecla[0]                                     ; controlador_teclado:teclas|state_next.00_112 ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; 0.500        ; 6.040      ; 6.401      ;
+; -1.593 ; tecla[0]                                     ; controlador_teclado:teclas|state_next.10_90  ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; 1.000        ; 6.415      ; 7.186      ;
+; -1.572 ; tecla[0]                                     ; controlador_teclado:teclas|state_next.01_101 ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; 1.000        ; 6.421      ; 7.171      ;
+; -1.564 ; controlador_teclado:teclas|state_reg.01      ; controlador_teclado:teclas|state_next.10_90  ; clk                                          ; controlador_principal:controle|estado_reg.q0 ; 1.000        ; 3.067      ; 3.809      ;
+; -1.533 ; controlador_teclado:teclas|state_reg.01      ; controlador_teclado:teclas|state_next.01_101 ; clk                                          ; controlador_principal:controle|estado_reg.q0 ; 1.000        ; 3.073      ; 3.784      ;
+; -1.475 ; tecla[0]                                     ; controlador_teclado:teclas|state_next.00_112 ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; 1.000        ; 6.040      ; 6.401      ;
+; -0.897 ; controlador_teclado:teclas|state_reg.espera  ; controlador_teclado:teclas|state_next.01_101 ; clk                                          ; controlador_principal:controle|estado_reg.q0 ; 1.000        ; 3.073      ; 3.148      ;
+; -0.776 ; controlador_teclado:teclas|state_reg.espera  ; controlador_teclado:teclas|state_next.00_112 ; clk                                          ; controlador_principal:controle|estado_reg.q0 ; 1.000        ; 2.692      ; 2.354      ;
+; -0.183 ; controlador_principal:controle|estado_reg.q0 ; controlador_teclado:teclas|state_next.10_90  ; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q0 ; 0.500        ; 6.415      ; 5.652      ;
+; -0.162 ; controlador_principal:controle|estado_reg.q0 ; controlador_teclado:teclas|state_next.01_101 ; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q0 ; 0.500        ; 6.421      ; 5.637      ;
+; -0.065 ; controlador_principal:controle|estado_reg.q0 ; controlador_teclado:teclas|state_next.00_112 ; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q0 ; 0.500        ; 6.040      ; 4.867      ;
+; -0.035 ; controlador_principal:controle|estado_reg.q1 ; estado_anterior[1]                           ; clk                                          ; controlador_principal:controle|estado_reg.q0 ; 1.000        ; 3.444      ; 2.985      ;
+; 0.317  ; controlador_principal:controle|estado_reg.q0 ; controlador_teclado:teclas|state_next.10_90  ; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q0 ; 1.000        ; 6.415      ; 5.652      ;
+; 0.338  ; controlador_principal:controle|estado_reg.q0 ; controlador_teclado:teclas|state_next.01_101 ; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q0 ; 1.000        ; 6.421      ; 5.637      ;
+; 0.435  ; controlador_principal:controle|estado_reg.q0 ; controlador_teclado:teclas|state_next.00_112 ; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q0 ; 1.000        ; 6.040      ; 4.867      ;
+; 0.545  ; controlador_principal:controle|estado_reg.q2 ; estado_anterior[0]                           ; clk                                          ; controlador_principal:controle|estado_reg.q0 ; 1.000        ; 3.979      ; 2.776      ;
+; 2.272  ; controlador_principal:controle|estado_reg.q0 ; estado_anterior[1]                           ; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q0 ; 0.500        ; 6.792      ; 3.902      ;
+; 2.772  ; controlador_principal:controle|estado_reg.q0 ; estado_anterior[1]                           ; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q0 ; 1.000        ; 6.792      ; 3.902      ;
+; 2.843  ; controlador_principal:controle|estado_reg.q0 ; estado_anterior[0]                           ; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q0 ; 0.500        ; 7.327      ; 3.702      ;
+; 3.343  ; controlador_principal:controle|estado_reg.q0 ; estado_anterior[0]                           ; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q0 ; 1.000        ; 7.327      ; 3.702      ;
++--------+----------------------------------------------+----------------------------------------------+----------------------------------------------+----------------------------------------------+--------------+------------+------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'tecla[0]'                                                                                                                ;
++--------+-----------+---------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node ; To Node                               ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-----------+---------------------------------------+--------------+-------------+--------------+------------+------------+
+; -1.563 ; tecla[0]  ; gerador_codificador:gerador|codigo[3] ; tecla[0]     ; tecla[0]    ; 0.500        ; 8.738      ; 9.145      ;
+; -1.429 ; tecla[0]  ; gerador_codificador:gerador|codigo[1] ; tecla[0]     ; tecla[0]    ; 0.500        ; 8.718      ; 9.154      ;
+; -1.063 ; tecla[0]  ; gerador_codificador:gerador|codigo[3] ; tecla[0]     ; tecla[0]    ; 1.000        ; 8.738      ; 9.145      ;
+; -1.000 ; tecla[0]  ; gerador_codificador:gerador|codigo[0] ; tecla[0]     ; tecla[0]    ; 0.500        ; 8.719      ; 8.707      ;
+; -0.968 ; tecla[0]  ; gerador_codificador:gerador|codigo[2] ; tecla[0]     ; tecla[0]    ; 0.500        ; 8.740      ; 8.699      ;
+; -0.929 ; tecla[0]  ; gerador_codificador:gerador|codigo[1] ; tecla[0]     ; tecla[0]    ; 1.000        ; 8.718      ; 9.154      ;
+; -0.500 ; tecla[0]  ; gerador_codificador:gerador|codigo[0] ; tecla[0]     ; tecla[0]    ; 1.000        ; 8.719      ; 8.707      ;
+; -0.468 ; tecla[0]  ; gerador_codificador:gerador|codigo[2] ; tecla[0]     ; tecla[0]    ; 1.000        ; 8.740      ; 8.699      ;
++--------+-----------+---------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'controlador_principal:controle|estado_reg.q0'                                                                                                                                                                                        ;
++--------+----------------------------------------------+----------------------------------------------+----------------------------------------------+----------------------------------------------+--------------+------------+------------+
+; Slack  ; From Node                                    ; To Node                                      ; Launch Clock                                 ; Latch Clock                                  ; Relationship ; Clock Skew ; Data Delay ;
++--------+----------------------------------------------+----------------------------------------------+----------------------------------------------+----------------------------------------------+--------------+------------+------------+
+; -4.770 ; controlador_principal:controle|estado_reg.q0 ; estado_anterior[0]                           ; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q0 ; 0.000        ; 8.096      ; 3.702      ;
+; -4.270 ; controlador_principal:controle|estado_reg.q0 ; estado_anterior[0]                           ; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q0 ; -0.500       ; 8.096      ; 3.702      ;
+; -4.035 ; controlador_principal:controle|estado_reg.q0 ; estado_anterior[1]                           ; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q0 ; 0.000        ; 7.561      ; 3.902      ;
+; -3.535 ; controlador_principal:controle|estado_reg.q0 ; estado_anterior[1]                           ; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q0 ; -0.500       ; 7.561      ; 3.902      ;
+; -1.972 ; controlador_principal:controle|estado_reg.q2 ; estado_anterior[0]                           ; clk                                          ; controlador_principal:controle|estado_reg.q0 ; 0.000        ; 4.748      ; 2.776      ;
+; -1.549 ; controlador_principal:controle|estado_reg.q0 ; controlador_teclado:teclas|state_next.00_112 ; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q0 ; 0.000        ; 6.040      ; 4.867      ;
+; -1.228 ; controlador_principal:controle|estado_reg.q1 ; estado_anterior[1]                           ; clk                                          ; controlador_principal:controle|estado_reg.q0 ; 0.000        ; 4.213      ; 2.985      ;
+; -1.160 ; controlador_principal:controle|estado_reg.q0 ; controlador_teclado:teclas|state_next.01_101 ; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q0 ; 0.000        ; 6.421      ; 5.637      ;
+; -1.139 ; controlador_principal:controle|estado_reg.q0 ; controlador_teclado:teclas|state_next.10_90  ; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q0 ; 0.000        ; 6.415      ; 5.652      ;
+; -1.049 ; controlador_principal:controle|estado_reg.q0 ; controlador_teclado:teclas|state_next.00_112 ; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q0 ; -0.500       ; 6.040      ; 4.867      ;
+; -0.660 ; controlador_principal:controle|estado_reg.q0 ; controlador_teclado:teclas|state_next.01_101 ; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q0 ; -0.500       ; 6.421      ; 5.637      ;
+; -0.639 ; controlador_principal:controle|estado_reg.q0 ; controlador_teclado:teclas|state_next.10_90  ; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q0 ; -0.500       ; 6.415      ; 5.652      ;
+; -0.338 ; controlador_teclado:teclas|state_reg.espera  ; controlador_teclado:teclas|state_next.00_112 ; clk                                          ; controlador_principal:controle|estado_reg.q0 ; 0.000        ; 2.692      ; 2.354      ;
+; 0.075  ; controlador_teclado:teclas|state_reg.espera  ; controlador_teclado:teclas|state_next.01_101 ; clk                                          ; controlador_principal:controle|estado_reg.q0 ; 0.000        ; 3.073      ; 3.148      ;
+; 0.361  ; tecla[0]                                     ; controlador_teclado:teclas|state_next.00_112 ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; 0.000        ; 6.040      ; 6.401      ;
+; 0.711  ; controlador_teclado:teclas|state_reg.01      ; controlador_teclado:teclas|state_next.01_101 ; clk                                          ; controlador_principal:controle|estado_reg.q0 ; 0.000        ; 3.073      ; 3.784      ;
+; 0.742  ; controlador_teclado:teclas|state_reg.01      ; controlador_teclado:teclas|state_next.10_90  ; clk                                          ; controlador_principal:controle|estado_reg.q0 ; 0.000        ; 3.067      ; 3.809      ;
+; 0.750  ; tecla[0]                                     ; controlador_teclado:teclas|state_next.01_101 ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; 0.000        ; 6.421      ; 7.171      ;
+; 0.771  ; tecla[0]                                     ; controlador_teclado:teclas|state_next.10_90  ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; 0.000        ; 6.415      ; 7.186      ;
+; 0.861  ; tecla[0]                                     ; controlador_teclado:teclas|state_next.00_112 ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; -0.500       ; 6.040      ; 6.401      ;
+; 1.250  ; tecla[0]                                     ; controlador_teclado:teclas|state_next.01_101 ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; -0.500       ; 6.421      ; 7.171      ;
+; 1.271  ; tecla[0]                                     ; controlador_teclado:teclas|state_next.10_90  ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; -0.500       ; 6.415      ; 7.186      ;
+; 1.308  ; tecla[0]                                     ; gerador_codificador:gerador|codigo[2]        ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; 0.000        ; 7.391      ; 8.699      ;
+; 1.337  ; tecla[0]                                     ; gerador_codificador:gerador|codigo[0]        ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; 0.000        ; 7.370      ; 8.707      ;
+; 1.756  ; tecla[0]                                     ; gerador_codificador:gerador|codigo[3]        ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; 0.000        ; 7.389      ; 9.145      ;
+; 1.785  ; tecla[0]                                     ; gerador_codificador:gerador|codigo[1]        ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; 0.000        ; 7.369      ; 9.154      ;
+; 1.808  ; tecla[0]                                     ; gerador_codificador:gerador|codigo[2]        ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; -0.500       ; 7.391      ; 8.699      ;
+; 1.837  ; tecla[0]                                     ; gerador_codificador:gerador|codigo[0]        ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; -0.500       ; 7.370      ; 8.707      ;
+; 2.256  ; tecla[0]                                     ; gerador_codificador:gerador|codigo[3]        ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; -0.500       ; 7.389      ; 9.145      ;
+; 2.285  ; tecla[0]                                     ; gerador_codificador:gerador|codigo[1]        ; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; -0.500       ; 7.369      ; 9.154      ;
+; 2.533  ; controlador_teclado:teclas|state_reg.espera  ; controlador_teclado:teclas|digito[0]         ; clk                                          ; controlador_principal:controle|estado_reg.q0 ; 0.000        ; -0.683     ; 1.850      ;
+; 2.834  ; controlador_teclado:teclas|state_reg.01      ; controlador_teclado:teclas|digito[1]         ; clk                                          ; controlador_principal:controle|estado_reg.q0 ; 0.000        ; -0.504     ; 2.330      ;
++--------+----------------------------------------------+----------------------------------------------+----------------------------------------------+----------------------------------------------+--------------+------------+------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'gerador_codificador:gerador|codigo[0]'                                                                                                                                                                                    ;
++--------+---------------------------------------+-------------------------------------------------+----------------------------------------------+---------------------------------------+--------------+------------+------------+
+; Slack  ; From Node                             ; To Node                                         ; Launch Clock                                 ; Latch Clock                           ; Relationship ; Clock Skew ; Data Delay ;
++--------+---------------------------------------+-------------------------------------------------+----------------------------------------------+---------------------------------------+--------------+------------+------------+
+; -3.831 ; gerador_codificador:gerador|codigo[0] ; controlador_memoria:controle_mem|valor_preco[3] ; gerador_codificador:gerador|codigo[0]        ; gerador_codificador:gerador|codigo[0] ; 0.000        ; 5.994      ; 2.163      ;
+; -3.492 ; gerador_codificador:gerador|codigo[0] ; controlador_memoria:controle_mem|valor_preco[0] ; gerador_codificador:gerador|codigo[0]        ; gerador_codificador:gerador|codigo[0] ; 0.000        ; 6.101      ; 2.609      ;
+; -3.482 ; gerador_codificador:gerador|codigo[0] ; controlador_memoria:controle_mem|valor_preco[1] ; gerador_codificador:gerador|codigo[0]        ; gerador_codificador:gerador|codigo[0] ; 0.000        ; 6.098      ; 2.616      ;
+; -3.331 ; gerador_codificador:gerador|codigo[0] ; controlador_memoria:controle_mem|valor_preco[3] ; gerador_codificador:gerador|codigo[0]        ; gerador_codificador:gerador|codigo[0] ; -0.500       ; 5.994      ; 2.163      ;
+; -3.078 ; gerador_codificador:gerador|codigo[0] ; controlador_memoria:controle_mem|valor_preco[2] ; gerador_codificador:gerador|codigo[0]        ; gerador_codificador:gerador|codigo[0] ; 0.000        ; 6.099      ; 3.021      ;
+; -2.992 ; gerador_codificador:gerador|codigo[0] ; controlador_memoria:controle_mem|valor_preco[0] ; gerador_codificador:gerador|codigo[0]        ; gerador_codificador:gerador|codigo[0] ; -0.500       ; 6.101      ; 2.609      ;
+; -2.982 ; gerador_codificador:gerador|codigo[0] ; controlador_memoria:controle_mem|valor_preco[1] ; gerador_codificador:gerador|codigo[0]        ; gerador_codificador:gerador|codigo[0] ; -0.500       ; 6.098      ; 2.616      ;
+; -2.578 ; gerador_codificador:gerador|codigo[0] ; controlador_memoria:controle_mem|valor_preco[2] ; gerador_codificador:gerador|codigo[0]        ; gerador_codificador:gerador|codigo[0] ; -0.500       ; 6.099      ; 3.021      ;
+; 2.646  ; gerador_codificador:gerador|codigo[3] ; controlador_memoria:controle_mem|valor_preco[3] ; controlador_principal:controle|estado_reg.q0 ; gerador_codificador:gerador|codigo[0] ; -0.500       ; -1.136     ; 1.010      ;
+; 3.403  ; gerador_codificador:gerador|codigo[1] ; controlador_memoria:controle_mem|valor_preco[0] ; controlador_principal:controle|estado_reg.q0 ; gerador_codificador:gerador|codigo[0] ; -0.500       ; -1.009     ; 1.894      ;
+; 3.413  ; gerador_codificador:gerador|codigo[1] ; controlador_memoria:controle_mem|valor_preco[1] ; controlador_principal:controle|estado_reg.q0 ; gerador_codificador:gerador|codigo[0] ; -0.500       ; -1.012     ; 1.901      ;
+; 3.459  ; gerador_codificador:gerador|codigo[2] ; controlador_memoria:controle_mem|valor_preco[3] ; controlador_principal:controle|estado_reg.q0 ; gerador_codificador:gerador|codigo[0] ; -0.500       ; -1.138     ; 1.821      ;
+; 3.762  ; gerador_codificador:gerador|codigo[2] ; controlador_memoria:controle_mem|valor_preco[1] ; controlador_principal:controle|estado_reg.q0 ; gerador_codificador:gerador|codigo[0] ; -0.500       ; -1.034     ; 2.228      ;
+; 3.817  ; gerador_codificador:gerador|codigo[1] ; controlador_memoria:controle_mem|valor_preco[2] ; controlador_principal:controle|estado_reg.q0 ; gerador_codificador:gerador|codigo[0] ; -0.500       ; -1.011     ; 2.306      ;
+; 3.832  ; gerador_codificador:gerador|codigo[3] ; controlador_memoria:controle_mem|valor_preco[0] ; controlador_principal:controle|estado_reg.q0 ; gerador_codificador:gerador|codigo[0] ; -0.500       ; -1.029     ; 2.303      ;
+; 4.011  ; gerador_codificador:gerador|codigo[3] ; controlador_memoria:controle_mem|valor_preco[1] ; controlador_principal:controle|estado_reg.q0 ; gerador_codificador:gerador|codigo[0] ; -0.500       ; -1.032     ; 2.479      ;
+; 4.163  ; gerador_codificador:gerador|codigo[2] ; controlador_memoria:controle_mem|valor_preco[2] ; controlador_principal:controle|estado_reg.q0 ; gerador_codificador:gerador|codigo[0] ; -0.500       ; -1.033     ; 2.630      ;
+; 4.254  ; gerador_codificador:gerador|codigo[3] ; controlador_memoria:controle_mem|valor_preco[3] ; tecla[0]                                     ; gerador_codificador:gerador|codigo[0] ; -0.500       ; -2.744     ; 1.010      ;
+; 4.413  ; gerador_codificador:gerador|codigo[3] ; controlador_memoria:controle_mem|valor_preco[2] ; controlador_principal:controle|estado_reg.q0 ; gerador_codificador:gerador|codigo[0] ; -0.500       ; -1.031     ; 2.882      ;
+; 5.011  ; gerador_codificador:gerador|codigo[1] ; controlador_memoria:controle_mem|valor_preco[0] ; tecla[0]                                     ; gerador_codificador:gerador|codigo[0] ; -0.500       ; -2.617     ; 1.894      ;
+; 5.021  ; gerador_codificador:gerador|codigo[1] ; controlador_memoria:controle_mem|valor_preco[1] ; tecla[0]                                     ; gerador_codificador:gerador|codigo[0] ; -0.500       ; -2.620     ; 1.901      ;
+; 5.067  ; gerador_codificador:gerador|codigo[2] ; controlador_memoria:controle_mem|valor_preco[3] ; tecla[0]                                     ; gerador_codificador:gerador|codigo[0] ; -0.500       ; -2.746     ; 1.821      ;
+; 5.370  ; gerador_codificador:gerador|codigo[2] ; controlador_memoria:controle_mem|valor_preco[1] ; tecla[0]                                     ; gerador_codificador:gerador|codigo[0] ; -0.500       ; -2.642     ; 2.228      ;
+; 5.425  ; gerador_codificador:gerador|codigo[1] ; controlador_memoria:controle_mem|valor_preco[2] ; tecla[0]                                     ; gerador_codificador:gerador|codigo[0] ; -0.500       ; -2.619     ; 2.306      ;
+; 5.440  ; gerador_codificador:gerador|codigo[3] ; controlador_memoria:controle_mem|valor_preco[0] ; tecla[0]                                     ; gerador_codificador:gerador|codigo[0] ; -0.500       ; -2.637     ; 2.303      ;
+; 5.619  ; gerador_codificador:gerador|codigo[3] ; controlador_memoria:controle_mem|valor_preco[1] ; tecla[0]                                     ; gerador_codificador:gerador|codigo[0] ; -0.500       ; -2.640     ; 2.479      ;
+; 5.771  ; gerador_codificador:gerador|codigo[2] ; controlador_memoria:controle_mem|valor_preco[2] ; tecla[0]                                     ; gerador_codificador:gerador|codigo[0] ; -0.500       ; -2.641     ; 2.630      ;
+; 6.021  ; gerador_codificador:gerador|codigo[3] ; controlador_memoria:controle_mem|valor_preco[2] ; tecla[0]                                     ; gerador_codificador:gerador|codigo[0] ; -0.500       ; -2.639     ; 2.882      ;
++--------+---------------------------------------+-------------------------------------------------+----------------------------------------------+---------------------------------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'clk'                                                                                                                                                                                                         ;
++--------+----------------------------------------------+-------------------------------------------------------+----------------------------------------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                                    ; To Node                                               ; Launch Clock                                 ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+----------------------------------------------+-------------------------------------------------------+----------------------------------------------+-------------+--------------+------------+------------+
+; -1.035 ; gerador_codificador:gerador|codigo[0]        ; display_segmentos:display|codigoD[0]                  ; gerador_codificador:gerador|codigo[0]        ; clk         ; 0.000        ; 3.348      ; 2.534      ;
+; -0.934 ; controlador_principal:controle|estado_reg.q0 ; display_segmentos:display|codigoB[0]                  ; controlador_principal:controle|estado_reg.q0 ; clk         ; 0.000        ; 3.348      ; 3.011      ;
+; -0.917 ; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q1          ; controlador_principal:controle|estado_reg.q0 ; clk         ; 0.000        ; 3.348      ; 3.028      ;
+; -0.611 ; controlador_principal:controle|estado_reg.q0 ; display_segmentos:display|codigoD[3]                  ; controlador_principal:controle|estado_reg.q0 ; clk         ; 0.000        ; 3.348      ; 3.334      ;
+; -0.535 ; gerador_codificador:gerador|codigo[0]        ; display_segmentos:display|codigoD[0]                  ; gerador_codificador:gerador|codigo[0]        ; clk         ; -0.500       ; 3.348      ; 2.534      ;
+; -0.434 ; controlador_principal:controle|estado_reg.q0 ; display_segmentos:display|codigoB[0]                  ; controlador_principal:controle|estado_reg.q0 ; clk         ; -0.500       ; 3.348      ; 3.011      ;
+; -0.417 ; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q1          ; controlador_principal:controle|estado_reg.q0 ; clk         ; -0.500       ; 3.348      ; 3.028      ;
+; -0.142 ; controlador_principal:controle|estado_reg.q0 ; display_segmentos:display|codigoC[2]                  ; controlador_principal:controle|estado_reg.q0 ; clk         ; 0.000        ; 3.348      ; 3.803      ;
+; -0.111 ; controlador_principal:controle|estado_reg.q0 ; display_segmentos:display|codigoD[3]                  ; controlador_principal:controle|estado_reg.q0 ; clk         ; -0.500       ; 3.348      ; 3.334      ;
+; -0.075 ; controlador_principal:controle|estado_reg.q0 ; display_segmentos:display|codigoD[2]                  ; controlador_principal:controle|estado_reg.q0 ; clk         ; 0.000        ; 3.348      ; 3.870      ;
+; 0.163  ; gerador_codificador:gerador|codigo[0]        ; controlador_principal:controle|estado_reg.q2          ; gerador_codificador:gerador|codigo[0]        ; clk         ; 0.000        ; 3.348      ; 3.732      ;
+; 0.358  ; controlador_principal:controle|estado_reg.q0 ; display_segmentos:display|codigoC[2]                  ; controlador_principal:controle|estado_reg.q0 ; clk         ; -0.500       ; 3.348      ; 3.803      ;
+; 0.425  ; controlador_principal:controle|estado_reg.q0 ; display_segmentos:display|codigoD[2]                  ; controlador_principal:controle|estado_reg.q0 ; clk         ; -0.500       ; 3.348      ; 3.870      ;
+; 0.663  ; gerador_codificador:gerador|codigo[0]        ; controlador_principal:controle|estado_reg.q2          ; gerador_codificador:gerador|codigo[0]        ; clk         ; -0.500       ; 3.348      ; 3.732      ;
+; 1.027  ; controlador_principal:controle|estado_reg.q0 ; display_segmentos:display|codigoC[1]                  ; controlador_principal:controle|estado_reg.q0 ; clk         ; 0.000        ; 3.348      ; 4.972      ;
+; 1.040  ; controlador_principal:controle|estado_reg.q0 ; display_segmentos:display|codigoB[1]                  ; controlador_principal:controle|estado_reg.q0 ; clk         ; 0.000        ; 3.348      ; 4.985      ;
+; 1.041  ; controlador_principal:controle|estado_reg.q0 ; display_segmentos:display|codigoD[0]                  ; controlador_principal:controle|estado_reg.q0 ; clk         ; 0.000        ; 3.348      ; 4.986      ;
+; 1.169  ; controlador_principal:controle|estado_reg.q0 ; display_segmentos:display|codigoD[1]                  ; controlador_principal:controle|estado_reg.q0 ; clk         ; 0.000        ; 3.348      ; 5.114      ;
+; 1.470  ; controlador_principal:controle|estado_reg.q0 ; display_segmentos:display|codigoC[0]                  ; controlador_principal:controle|estado_reg.q0 ; clk         ; 0.000        ; 3.348      ; 5.415      ;
+; 1.527  ; controlador_principal:controle|estado_reg.q0 ; display_segmentos:display|codigoC[1]                  ; controlador_principal:controle|estado_reg.q0 ; clk         ; -0.500       ; 3.348      ; 4.972      ;
+; 1.540  ; controlador_principal:controle|estado_reg.q0 ; display_segmentos:display|codigoB[1]                  ; controlador_principal:controle|estado_reg.q0 ; clk         ; -0.500       ; 3.348      ; 4.985      ;
+; 1.541  ; controlador_principal:controle|estado_reg.q0 ; display_segmentos:display|codigoD[0]                  ; controlador_principal:controle|estado_reg.q0 ; clk         ; -0.500       ; 3.348      ; 4.986      ;
+; 1.665  ; divisor_clock:comb_16|contador[17]           ; divisor_clock:comb_16|contador[17]                    ; clk                                          ; clk         ; 0.000        ; 0.000      ; 1.886      ;
+; 1.667  ; multiplexador:mux|contador[0]                ; multiplexador:mux|contador[0]                         ; clk                                          ; clk         ; 0.000        ; 0.000      ; 1.888      ;
+; 1.669  ; controlador_principal:controle|estado_reg.q0 ; display_segmentos:display|codigoD[1]                  ; controlador_principal:controle|estado_reg.q0 ; clk         ; -0.500       ; 3.348      ; 5.114      ;
+; 1.679  ; display_segmentos:display|codigoD[3]         ; display_segmentos:display|decodificador:decodC|seg[0] ; clk                                          ; clk         ; 0.000        ; 0.000      ; 1.900      ;
+; 1.679  ; display_segmentos:display|codigoD[3]         ; display_segmentos:display|decodificador:decodD|seg[0] ; clk                                          ; clk         ; 0.000        ; 0.000      ; 1.900      ;
+; 1.686  ; controlador_principal:controle|estado_reg.q1 ; display_segmentos:display|codigoB[0]                  ; clk                                          ; clk         ; 0.000        ; 0.000      ; 1.907      ;
+; 1.734  ; gerador_codificador:gerador|codigo[0]        ; controlador_principal:controle|estado_reg.q0          ; gerador_codificador:gerador|codigo[0]        ; clk         ; 0.000        ; 3.348      ; 5.303      ;
+; 1.898  ; acumulador:ac|state_reg.0000                 ; acumulador:ac|state_reg.0000                          ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.119      ;
+; 1.910  ; display_segmentos:display|codigoC[2]         ; display_segmentos:display|decodificador:decodC|seg[0] ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.131      ;
+; 1.927  ; acumulador:ac|state_reg.0101                 ; acumulador:ac|state_reg.0101                          ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.148      ;
+; 1.970  ; controlador_principal:controle|estado_reg.q0 ; display_segmentos:display|codigoC[0]                  ; controlador_principal:controle|estado_reg.q0 ; clk         ; -0.500       ; 3.348      ; 5.415      ;
+; 1.976  ; acumulador:ac|state_reg.0110                 ; acumulador:ac|state_reg.0110                          ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.197      ;
+; 1.984  ; acumulador:ac|state_reg.0110                 ; acumulador:ac|state_reg.0111                          ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.205      ;
+; 1.989  ; acumulador:ac|state_reg.0001                 ; acumulador:ac|state_reg.0001                          ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.210      ;
+; 2.002  ; acumulador:ac|state_reg.0001                 ; acumulador:ac|state_reg.0011                          ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.223      ;
+; 2.108  ; divisor_clock:comb_16|contador[6]            ; divisor_clock:comb_16|contador[6]                     ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.329      ;
+; 2.116  ; divisor_clock:comb_16|contador[9]            ; divisor_clock:comb_16|contador[9]                     ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.337      ;
+; 2.117  ; divisor_clock:comb_16|contador[16]           ; divisor_clock:comb_16|contador[16]                    ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.338      ;
+; 2.117  ; divisor_clock:comb_16|contador[11]           ; divisor_clock:comb_16|contador[11]                    ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.338      ;
+; 2.117  ; divisor_clock:comb_16|contador[10]           ; divisor_clock:comb_16|contador[10]                    ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.338      ;
+; 2.124  ; display_segmentos:display|codigoD[2]         ; display_segmentos:display|decodificador:decodD|seg[0] ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.345      ;
+; 2.126  ; divisor_clock:comb_16|contador[8]            ; divisor_clock:comb_16|contador[8]                     ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.347      ;
+; 2.137  ; display_segmentos:display|codigoB[1]         ; display_segmentos:display|decodificador:decodB|seg[0] ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.358      ;
+; 2.137  ; display_segmentos:display|codigoC[1]         ; display_segmentos:display|decodificador:decodC|seg[0] ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.358      ;
+; 2.138  ; multiplexador:mux|contador[0]                ; multiplexador:mux|contador[1]                         ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.359      ;
+; 2.153  ; controlador_teclado:teclas|digito[0]         ; controlador_principal:controle|estado_reg.q1          ; controlador_principal:controle|estado_reg.q0 ; clk         ; 0.000        ; 0.683      ; 3.057      ;
+; 2.209  ; acumulador:ac|state_reg.0011                 ; acumulador:ac|state_reg.0011                          ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.430      ;
+; 2.221  ; divisor_clock:comb_16|contador[7]            ; divisor_clock:comb_16|contador[7]                     ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.442      ;
+; 2.221  ; divisor_clock:comb_16|contador[2]            ; divisor_clock:comb_16|contador[2]                     ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.442      ;
+; 2.227  ; display_segmentos:display|codigoD[0]         ; display_segmentos:display|decodificador:decodD|seg[0] ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.448      ;
+; 2.228  ; display_segmentos:display|codigoC[0]         ; display_segmentos:display|decodificador:decodC|seg[0] ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.449      ;
+; 2.230  ; divisor_clock:comb_16|contador[14]           ; divisor_clock:comb_16|contador[14]                    ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.451      ;
+; 2.230  ; divisor_clock:comb_16|contador[4]            ; divisor_clock:comb_16|contador[4]                     ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.451      ;
+; 2.231  ; divisor_clock:comb_16|contador[15]           ; divisor_clock:comb_16|contador[15]                    ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.452      ;
+; 2.231  ; divisor_clock:comb_16|contador[13]           ; divisor_clock:comb_16|contador[13]                    ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.452      ;
+; 2.231  ; divisor_clock:comb_16|contador[12]           ; divisor_clock:comb_16|contador[12]                    ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.452      ;
+; 2.231  ; divisor_clock:comb_16|contador[5]            ; divisor_clock:comb_16|contador[5]                     ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.452      ;
+; 2.231  ; divisor_clock:comb_16|contador[3]            ; divisor_clock:comb_16|contador[3]                     ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.452      ;
+; 2.234  ; gerador_codificador:gerador|codigo[0]        ; controlador_principal:controle|estado_reg.q0          ; gerador_codificador:gerador|codigo[0]        ; clk         ; -0.500       ; 3.348      ; 5.303      ;
+; 2.300  ; acumulador:ac|state_reg.1000                 ; acumulador:ac|state_reg.1000                          ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.521      ;
+; 2.312  ; acumulador:ac|state_reg.0111                 ; acumulador:ac|state_reg.0111                          ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.533      ;
+; 2.321  ; multiplexador:mux|contador[2]                ; multiplexador:mux|contador[2]                         ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.542      ;
+; 2.322  ; multiplexador:mux|contador[2]                ; multiplexador:mux|displays[0]                         ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.543      ;
+; 2.323  ; multiplexador:mux|contador[2]                ; multiplexador:mux|displays[1]                         ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.544      ;
+; 2.328  ; multiplexador:mux|contador[2]                ; multiplexador:mux|displays[3]                         ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.549      ;
+; 2.330  ; multiplexador:mux|contador[2]                ; multiplexador:mux|displays[2]                         ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.551      ;
+; 2.341  ; controlador_principal:controle|estado_reg.q2 ; display_segmentos:display|codigoB[0]                  ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.562      ;
+; 2.428  ; controlador_principal:controle|estado_reg.q1 ; controlador_principal:controle|estado_reg.q2          ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.649      ;
+; 2.505  ; controlador_teclado:teclas|digito[1]         ; controlador_principal:controle|estado_reg.q0          ; controlador_principal:controle|estado_reg.q0 ; clk         ; 0.000        ; 0.504      ; 3.230      ;
+; 2.540  ; acumulador:ac|state_reg.0010                 ; acumulador:ac|state_reg.0011                          ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.761      ;
+; 2.561  ; display_segmentos:display|codigoD[1]         ; display_segmentos:display|codigoD[1]                  ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.782      ;
+; 2.619  ; acumulador:ac|state_reg.0000                 ; acumulador:ac|state_reg.0100                          ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.840      ;
+; 2.632  ; multiplexador:mux|contador[1]                ; multiplexador:mux|contador[1]                         ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.853      ;
+; 2.666  ; acumulador:ac|state_reg.0011                 ; acumulador:ac|state_reg.0111                          ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.887      ;
+; 2.673  ; acumulador:ac|state_reg.0101                 ; acumulador:ac|state_reg.0110                          ; clk                                          ; clk         ; 0.000        ; 0.000      ; 2.894      ;
+; 2.782  ; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q0          ; controlador_principal:controle|estado_reg.q0 ; clk         ; 0.000        ; 3.348      ; 6.727      ;
+; 2.845  ; multiplexador:mux|contador[1]                ; multiplexador:mux|displays[3]                         ; clk                                          ; clk         ; 0.000        ; 0.000      ; 3.066      ;
+; 2.848  ; multiplexador:mux|contador[1]                ; multiplexador:mux|displays[2]                         ; clk                                          ; clk         ; 0.000        ; 0.000      ; 3.069      ;
+; 2.851  ; multiplexador:mux|contador[1]                ; multiplexador:mux|contador[2]                         ; clk                                          ; clk         ; 0.000        ; 0.000      ; 3.072      ;
+; 2.852  ; multiplexador:mux|contador[1]                ; multiplexador:mux|displays[0]                         ; clk                                          ; clk         ; 0.000        ; 0.000      ; 3.073      ;
+; 2.854  ; multiplexador:mux|contador[1]                ; multiplexador:mux|displays[1]                         ; clk                                          ; clk         ; 0.000        ; 0.000      ; 3.075      ;
+; 2.900  ; controlador_principal:controle|estado_reg.q2 ; display_segmentos:display|codigoD[3]                  ; clk                                          ; clk         ; 0.000        ; 0.000      ; 3.121      ;
+; 2.907  ; controlador_teclado:teclas|digito[1]         ; controlador_principal:controle|estado_reg.q1          ; controlador_principal:controle|estado_reg.q0 ; clk         ; 0.000        ; 0.504      ; 3.632      ;
+; 2.921  ; multiplexador:mux|contador[0]                ; multiplexador:mux|displays[3]                         ; clk                                          ; clk         ; 0.000        ; 0.000      ; 3.142      ;
+; 2.924  ; multiplexador:mux|contador[0]                ; multiplexador:mux|displays[2]                         ; clk                                          ; clk         ; 0.000        ; 0.000      ; 3.145      ;
+; 2.931  ; multiplexador:mux|contador[0]                ; multiplexador:mux|contador[2]                         ; clk                                          ; clk         ; 0.000        ; 0.000      ; 3.152      ;
+; 2.932  ; multiplexador:mux|contador[0]                ; multiplexador:mux|displays[0]                         ; clk                                          ; clk         ; 0.000        ; 0.000      ; 3.153      ;
+; 2.933  ; multiplexador:mux|contador[0]                ; multiplexador:mux|displays[1]                         ; clk                                          ; clk         ; 0.000        ; 0.000      ; 3.154      ;
+; 2.940  ; divisor_clock:comb_16|contador[6]            ; divisor_clock:comb_16|contador[7]                     ; clk                                          ; clk         ; 0.000        ; 0.000      ; 3.161      ;
+; 2.948  ; divisor_clock:comb_16|contador[9]            ; divisor_clock:comb_16|contador[10]                    ; clk                                          ; clk         ; 0.000        ; 0.000      ; 3.169      ;
+; 2.949  ; divisor_clock:comb_16|contador[16]           ; divisor_clock:comb_16|contador[17]                    ; clk                                          ; clk         ; 0.000        ; 0.000      ; 3.170      ;
+; 2.949  ; divisor_clock:comb_16|contador[11]           ; divisor_clock:comb_16|contador[12]                    ; clk                                          ; clk         ; 0.000        ; 0.000      ; 3.170      ;
+; 2.949  ; divisor_clock:comb_16|contador[10]           ; divisor_clock:comb_16|contador[11]                    ; clk                                          ; clk         ; 0.000        ; 0.000      ; 3.170      ;
+; 2.970  ; multiplexador:mux|contador[0]                ; divisor_clock:comb_16|contador[2]                     ; clk                                          ; clk         ; 0.000        ; 0.000      ; 3.191      ;
+; 3.014  ; acumulador:ac|state_reg.0001                 ; acumulador:ac|state_reg.0101                          ; clk                                          ; clk         ; 0.000        ; 0.000      ; 3.235      ;
+; 3.051  ; divisor_clock:comb_16|contador[6]            ; divisor_clock:comb_16|contador[8]                     ; clk                                          ; clk         ; 0.000        ; 0.000      ; 3.272      ;
+; 3.059  ; divisor_clock:comb_16|contador[9]            ; divisor_clock:comb_16|contador[11]                    ; clk                                          ; clk         ; 0.000        ; 0.000      ; 3.280      ;
+; 3.060  ; divisor_clock:comb_16|contador[11]           ; divisor_clock:comb_16|contador[13]                    ; clk                                          ; clk         ; 0.000        ; 0.000      ; 3.281      ;
++--------+----------------------------------------------+-------------------------------------------------------+----------------------------------------------+-------------+--------------+------------+------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'tecla[0]'                                                                                                                 ;
++--------+-----------+---------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node ; To Node                               ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-----------+---------------------------------------+--------------+-------------+--------------+------------+------------+
+; -0.041 ; tecla[0]  ; gerador_codificador:gerador|codigo[2] ; tecla[0]     ; tecla[0]    ; 0.000        ; 8.740      ; 8.699      ;
+; -0.012 ; tecla[0]  ; gerador_codificador:gerador|codigo[0] ; tecla[0]     ; tecla[0]    ; 0.000        ; 8.719      ; 8.707      ;
+; 0.407  ; tecla[0]  ; gerador_codificador:gerador|codigo[3] ; tecla[0]     ; tecla[0]    ; 0.000        ; 8.738      ; 9.145      ;
+; 0.436  ; tecla[0]  ; gerador_codificador:gerador|codigo[1] ; tecla[0]     ; tecla[0]    ; 0.000        ; 8.718      ; 9.154      ;
+; 0.459  ; tecla[0]  ; gerador_codificador:gerador|codigo[2] ; tecla[0]     ; tecla[0]    ; -0.500       ; 8.740      ; 8.699      ;
+; 0.488  ; tecla[0]  ; gerador_codificador:gerador|codigo[0] ; tecla[0]     ; tecla[0]    ; -0.500       ; 8.719      ; 8.707      ;
+; 0.907  ; tecla[0]  ; gerador_codificador:gerador|codigo[3] ; tecla[0]     ; tecla[0]    ; -0.500       ; 8.738      ; 9.145      ;
+; 0.936  ; tecla[0]  ; gerador_codificador:gerador|codigo[1] ; tecla[0]     ; tecla[0]    ; -0.500       ; 8.718      ; 9.154      ;
++--------+-----------+---------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Recovery: 'clk'                                                                                                                                                 ;
++--------+------------------------------------+---------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                          ; To Node                                     ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+------------------------------------+---------------------------------------------+--------------+-------------+--------------+------------+------------+
+; -3.998 ; divisor_clock:comb_16|contador[17] ; controlador_teclado:teclas|state_reg.espera ; clk          ; clk         ; 1.000        ; 0.000      ; 4.665      ;
+; -3.624 ; divisor_clock:comb_16|contador[17] ; acumulador:ac|state_reg.0101                ; clk          ; clk         ; 1.000        ; 0.000      ; 4.291      ;
+; -3.604 ; divisor_clock:comb_16|contador[17] ; controlador_teclado:teclas|state_reg.01     ; clk          ; clk         ; 1.000        ; 0.000      ; 4.271      ;
+; -3.604 ; divisor_clock:comb_16|contador[17] ; controlador_teclado:teclas|state_reg.10     ; clk          ; clk         ; 1.000        ; 0.000      ; 4.271      ;
+; -3.584 ; divisor_clock:comb_16|contador[17] ; acumulador:ac|state_reg.0001                ; clk          ; clk         ; 1.000        ; 0.000      ; 4.251      ;
+; -3.584 ; divisor_clock:comb_16|contador[17] ; acumulador:ac|state_reg.0011                ; clk          ; clk         ; 1.000        ; 0.000      ; 4.251      ;
+; -3.584 ; divisor_clock:comb_16|contador[17] ; acumulador:ac|state_reg.0110                ; clk          ; clk         ; 1.000        ; 0.000      ; 4.251      ;
+; -3.584 ; divisor_clock:comb_16|contador[17] ; acumulador:ac|state_reg.0111                ; clk          ; clk         ; 1.000        ; 0.000      ; 4.251      ;
+; -3.584 ; divisor_clock:comb_16|contador[17] ; acumulador:ac|state_reg.0010                ; clk          ; clk         ; 1.000        ; 0.000      ; 4.251      ;
+; -3.561 ; divisor_clock:comb_16|contador[17] ; acumulador:ac|state_reg.0000                ; clk          ; clk         ; 1.000        ; 0.000      ; 4.228      ;
+; -2.967 ; divisor_clock:comb_16|contador[17] ; acumulador:ac|state_reg.0100                ; clk          ; clk         ; 1.000        ; 0.000      ; 3.634      ;
+; -2.533 ; divisor_clock:comb_16|contador[17] ; acumulador:ac|state_reg.1000                ; clk          ; clk         ; 1.000        ; 0.000      ; 3.200      ;
++--------+------------------------------------+---------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removal: 'clk'                                                                                                                                                 ;
++-------+------------------------------------+---------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                          ; To Node                                     ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+------------------------------------+---------------------------------------------+--------------+-------------+--------------+------------+------------+
+; 2.979 ; divisor_clock:comb_16|contador[17] ; acumulador:ac|state_reg.1000                ; clk          ; clk         ; 0.000        ; 0.000      ; 3.200      ;
+; 3.413 ; divisor_clock:comb_16|contador[17] ; acumulador:ac|state_reg.0100                ; clk          ; clk         ; 0.000        ; 0.000      ; 3.634      ;
+; 4.007 ; divisor_clock:comb_16|contador[17] ; acumulador:ac|state_reg.0000                ; clk          ; clk         ; 0.000        ; 0.000      ; 4.228      ;
+; 4.030 ; divisor_clock:comb_16|contador[17] ; acumulador:ac|state_reg.0001                ; clk          ; clk         ; 0.000        ; 0.000      ; 4.251      ;
+; 4.030 ; divisor_clock:comb_16|contador[17] ; acumulador:ac|state_reg.0011                ; clk          ; clk         ; 0.000        ; 0.000      ; 4.251      ;
+; 4.030 ; divisor_clock:comb_16|contador[17] ; acumulador:ac|state_reg.0110                ; clk          ; clk         ; 0.000        ; 0.000      ; 4.251      ;
+; 4.030 ; divisor_clock:comb_16|contador[17] ; acumulador:ac|state_reg.0111                ; clk          ; clk         ; 0.000        ; 0.000      ; 4.251      ;
+; 4.030 ; divisor_clock:comb_16|contador[17] ; acumulador:ac|state_reg.0010                ; clk          ; clk         ; 0.000        ; 0.000      ; 4.251      ;
+; 4.050 ; divisor_clock:comb_16|contador[17] ; controlador_teclado:teclas|state_reg.01     ; clk          ; clk         ; 0.000        ; 0.000      ; 4.271      ;
+; 4.050 ; divisor_clock:comb_16|contador[17] ; controlador_teclado:teclas|state_reg.10     ; clk          ; clk         ; 0.000        ; 0.000      ; 4.271      ;
+; 4.070 ; divisor_clock:comb_16|contador[17] ; acumulador:ac|state_reg.0101                ; clk          ; clk         ; 0.000        ; 0.000      ; 4.291      ;
+; 4.444 ; divisor_clock:comb_16|contador[17] ; controlador_teclado:teclas|state_reg.espera ; clk          ; clk         ; 0.000        ; 0.000      ; 4.665      ;
++-------+------------------------------------+---------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------+
+; Setup Transfers                                                                                                                         ;
++----------------------------------------------+----------------------------------------------+----------+----------+----------+----------+
+; From Clock                                   ; To Clock                                     ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++----------------------------------------------+----------------------------------------------+----------+----------+----------+----------+
+; clk                                          ; clk                                          ; 443      ; 0        ; 0        ; 0        ;
+; controlador_principal:controle|estado_reg.q0 ; clk                                          ; 30       ; 32       ; 0        ; 0        ;
+; gerador_codificador:gerador|codigo[0]        ; clk                                          ; 11       ; 3        ; 0        ; 0        ;
+; tecla[0]                                     ; clk                                          ; 0        ; 9        ; 0        ; 0        ;
+; clk                                          ; controlador_principal:controle|estado_reg.q0 ; 8        ; 0        ; 0        ; 0        ;
+; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q0 ; 5        ; 5        ; 0        ; 0        ;
+; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; 3        ; 3        ; 4        ; 4        ;
+; controlador_principal:controle|estado_reg.q0 ; gerador_codificador:gerador|codigo[0]        ; 0        ; 10       ; 0        ; 0        ;
+; gerador_codificador:gerador|codigo[0]        ; gerador_codificador:gerador|codigo[0]        ; 4        ; 4        ; 0        ; 0        ;
+; tecla[0]                                     ; gerador_codificador:gerador|codigo[0]        ; 0        ; 10       ; 0        ; 0        ;
+; tecla[0]                                     ; tecla[0]                                     ; 0        ; 0        ; 4        ; 4        ;
++----------------------------------------------+----------------------------------------------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------+
+; Hold Transfers                                                                                                                          ;
++----------------------------------------------+----------------------------------------------+----------+----------+----------+----------+
+; From Clock                                   ; To Clock                                     ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++----------------------------------------------+----------------------------------------------+----------+----------+----------+----------+
+; clk                                          ; clk                                          ; 443      ; 0        ; 0        ; 0        ;
+; controlador_principal:controle|estado_reg.q0 ; clk                                          ; 30       ; 32       ; 0        ; 0        ;
+; gerador_codificador:gerador|codigo[0]        ; clk                                          ; 11       ; 3        ; 0        ; 0        ;
+; tecla[0]                                     ; clk                                          ; 0        ; 9        ; 0        ; 0        ;
+; clk                                          ; controlador_principal:controle|estado_reg.q0 ; 8        ; 0        ; 0        ; 0        ;
+; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q0 ; 5        ; 5        ; 0        ; 0        ;
+; tecla[0]                                     ; controlador_principal:controle|estado_reg.q0 ; 3        ; 3        ; 4        ; 4        ;
+; controlador_principal:controle|estado_reg.q0 ; gerador_codificador:gerador|codigo[0]        ; 0        ; 10       ; 0        ; 0        ;
+; gerador_codificador:gerador|codigo[0]        ; gerador_codificador:gerador|codigo[0]        ; 4        ; 4        ; 0        ; 0        ;
+; tecla[0]                                     ; gerador_codificador:gerador|codigo[0]        ; 0        ; 10       ; 0        ; 0        ;
+; tecla[0]                                     ; tecla[0]                                     ; 0        ; 0        ; 4        ; 4        ;
++----------------------------------------------+----------------------------------------------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Recovery Transfers                                                ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; clk        ; clk      ; 12       ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Removal Transfers                                                 ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; clk        ; clk      ; 12       ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No non-DPA dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths Summary                    ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 5     ; 5    ;
+; Unconstrained Input Port Paths  ; 33    ; 33   ;
+; Unconstrained Output Ports      ; 7     ; 7    ;
+; Unconstrained Output Port Paths ; 19    ; 19   ;
++---------------------------------+-------+------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Clock Status Summary                                                                                             ;
++----------------------------------------------+----------------------------------------------+------+-------------+
+; Target                                       ; Clock                                        ; Type ; Status      ;
++----------------------------------------------+----------------------------------------------+------+-------------+
+; clk                                          ; clk                                          ; Base ; Constrained ;
+; controlador_principal:controle|estado_reg.q0 ; controlador_principal:controle|estado_reg.q0 ; Base ; Constrained ;
+; gerador_codificador:gerador|codigo[0]        ; gerador_codificador:gerador|codigo[0]        ; Base ; Constrained ;
+; tecla[0]                                     ; tecla[0]                                     ; Base ; Constrained ;
++----------------------------------------------+----------------------------------------------+------+-------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                         ;
++------------+--------------------------------------------------------------------------------------+
+; Input Port ; Comment                                                                              ;
++------------+--------------------------------------------------------------------------------------+
+; moedas[0]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; moedas[1]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; tecla[1]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; tecla[2]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; tecla[3]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++------------+--------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                              ;
++-----------------+---------------------------------------------------------------------------------------+
+; Output Port     ; Comment                                                                               ;
++-----------------+---------------------------------------------------------------------------------------+
+; devolver_moedas ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; displays[0]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; displays[1]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; displays[2]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; displays[3]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; liberar         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; segmentos[0]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-----------------+---------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                         ;
++------------+--------------------------------------------------------------------------------------+
+; Input Port ; Comment                                                                              ;
++------------+--------------------------------------------------------------------------------------+
+; moedas[0]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; moedas[1]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; tecla[1]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; tecla[2]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; tecla[3]   ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++------------+--------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                              ;
++-----------------+---------------------------------------------------------------------------------------+
+; Output Port     ; Comment                                                                               ;
++-----------------+---------------------------------------------------------------------------------------+
+; devolver_moedas ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; displays[0]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; displays[1]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; displays[2]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; displays[3]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; liberar         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; segmentos[0]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-----------------+---------------------------------------------------------------------------------------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Timing Analyzer
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Mon Jun 21 23:56:08 2021
+Info: Command: quartus_sta problema3 -c problema3
+Info: qsta_default_script.tcl version: #1
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 85 degrees C
+Info (334003): Started post-fitting delay annotation
+Info (334004): Delay annotation completed successfully
+Warning (335093): The Timing Analyzer is analyzing 15 combinational loops as latches. For more details, run the Check Timing command in the Timing Analyzer or view the "User-Specified and Inferred Latches" table in the Analysis & Synthesis report.
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'problema3.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
+Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name clk clk
+    Info (332105): create_clock -period 1.000 -name tecla[0] tecla[0]
+    Info (332105): create_clock -period 1.000 -name controlador_principal:controle|estado_reg.q0 controlador_principal:controle|estado_reg.q0
+    Info (332105): create_clock -period 1.000 -name gerador_codificador:gerador|codigo[0] gerador_codificador:gerador|codigo[0]
+Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Can't run Report Timing Closure Recommendations. The current device family is not supported.
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -11.257
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):   -11.257            -217.804 clk 
+    Info (332119):    -7.929             -27.699 gerador_codificador:gerador|codigo[0] 
+    Info (332119):    -4.204             -24.950 controlador_principal:controle|estado_reg.q0 
+    Info (332119):    -1.563              -4.960 tecla[0] 
+Info (332146): Worst-case hold slack is -4.770
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -4.770             -12.653 controlador_principal:controle|estado_reg.q0 
+    Info (332119):    -3.831             -13.883 gerador_codificador:gerador|codigo[0] 
+    Info (332119):    -1.035              -3.714 clk 
+    Info (332119):    -0.041              -0.053 tecla[0] 
+Info (332146): Worst-case recovery slack is -3.998
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -3.998             -41.811 clk 
+Info (332146): Worst-case removal slack is 2.979
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     2.979               0.000 clk 
+Info (332146): Worst-case minimum pulse width slack is -2.289
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -2.289              -2.289 clk 
+    Info (332119):    -2.289              -2.289 tecla[0] 
+    Info (332119):    -0.269              -2.690 controlador_principal:controle|estado_reg.q0 
+    Info (332119):     0.500               0.000 gerador_codificador:gerador|codigo[0] 
+Info (332001): The selected device family is not supported by the report_metastability command.
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 4 warnings
+    Info: Peak virtual memory: 337 megabytes
+    Info: Processing ended: Mon Jun 21 23:56:28 2021
+    Info: Elapsed time: 00:00:20
+    Info: Total CPU time (on all processors): 00:00:02
+
+

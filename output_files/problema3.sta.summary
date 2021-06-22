@@ -1,0 +1,61 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Setup 'clk'
+Slack : -11.257
+TNS   : -217.804
+
+Type  : Setup 'gerador_codificador:gerador|codigo[0]'
+Slack : -7.929
+TNS   : -27.699
+
+Type  : Setup 'controlador_principal:controle|estado_reg.q0'
+Slack : -4.204
+TNS   : -24.950
+
+Type  : Setup 'tecla[0]'
+Slack : -1.563
+TNS   : -4.960
+
+Type  : Hold 'controlador_principal:controle|estado_reg.q0'
+Slack : -4.770
+TNS   : -12.653
+
+Type  : Hold 'gerador_codificador:gerador|codigo[0]'
+Slack : -3.831
+TNS   : -13.883
+
+Type  : Hold 'clk'
+Slack : -1.035
+TNS   : -3.714
+
+Type  : Hold 'tecla[0]'
+Slack : -0.041
+TNS   : -0.053
+
+Type  : Recovery 'clk'
+Slack : -3.998
+TNS   : -41.811
+
+Type  : Removal 'clk'
+Slack : 2.979
+TNS   : 0.000
+
+Type  : Minimum Pulse Width 'clk'
+Slack : -2.289
+TNS   : -2.289
+
+Type  : Minimum Pulse Width 'tecla[0]'
+Slack : -2.289
+TNS   : -2.289
+
+Type  : Minimum Pulse Width 'controlador_principal:controle|estado_reg.q0'
+Slack : -0.269
+TNS   : -2.690
+
+Type  : Minimum Pulse Width 'gerador_codificador:gerador|codigo[0]'
+Slack : 0.500
+TNS   : 0.000
+
+------------------------------------------------------------

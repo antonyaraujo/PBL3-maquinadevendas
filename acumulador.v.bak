@@ -1,22 +1,117 @@
-module acumulador();
-	input centavos_25, centavos_50, real_1, reset;
-	output valorTotal;
-	
-	reg [3:0] acumulador;
-	initial begin acumulador = 4'b0000;
-	
-	always @ (centavos_25, centavos_50, real_1, reset) begin
-		if (centavos_25)
-			acumulador = acumulador + 4'b0001;		
-		else if (centavos_50) 
-			acumulador = acumulador + 4'b0010;
-		else if (real_1)
-			acumulador = acumulador + 4'b0100;
-		default:
-			acumulador = 0000;
-	end
-	
-	assign valorTotal = acumulador;
-	
+
+
+module acumulador(moedas, clk, reset, total);
+   input wire clk, reset;
+	input [1:0] moedas;    
+   output reg [3:0] total;
+
+	//definicao de paramentros de 0 a 8
+	localparam [3:0] c_0 = 0, c_25 = 1, c_50 = 2, c_75 = 3, c_1 = 4, c_125 = 5, c_150 = 6, c_175 =  7, c_2 = 8;
+    
+	reg [3:0] state_reg, state_next;  
+ 
+	always @(posedge clk, posedge reset) begin
+		if (reset) begin
+			state_reg <= c_0;
+		end
+		else begin
+			state_reg <= state_next;
+		end
+	end 
+
+	always @(moedas[1], moedas[0], state_reg) begin     	 	
+		state_next = state_reg;
+		 //state_next = state_reg; // default state_next
+		case(state_reg)
+			c_0: begin
+				total = c_0;
+				if(moedas == 2'b01)
+					state_next = 4'b0001;
+				else if (moedas == 2'b10)
+					state_next = 4'b0010;
+				else if (moedas == 2'b11)	
+					state_next = 4'b0100;
+				else
+					state_next = state_reg;
+			end
+			c_25: begin
+				total = c_25;
+				if(moedas == 2'b01)
+					state_next = 4'b0010;
+				else if (moedas == 2'b10)
+					state_next = 4'b0011;
+				else if (moedas == 2'b11)	
+					state_next = 4'b0101;
+				else
+					state_next = state_reg;
+			end
+			c_50: begin
+				total = c_50;
+				if(moedas == 2'b01)
+					state_next = 4'b0011;
+				else if (moedas == 2'b10)
+					state_next = 4'b0100;
+				else if (moedas == 2'b11)	
+					state_next = 4'b0110;
+				else
+					state_next = state_reg;
+			end
+			c_1: begin
+				total = c_1;
+				if(moedas == 2'b01)
+					state_next = 4'b0101;
+				else if (moedas == 2'b10)
+					state_next = 4'b0110;
+				else if (moedas == 2'b11)	
+					state_next = 4'b1000;
+				else
+					state_next = state_reg;
+			end
+			c_125: begin
+				total = c_125;
+				if(moedas == 2'b01)
+					state_next = 4'b0110;
+				else if (moedas == 2'b10)
+					state_next = 4'b0111;
+				else if (moedas == 2'b11)	
+					state_next = 4'b0000;
+				else
+					state_next = state_reg;
+			end
+			c_150: begin
+				total = c_150;
+				if(moedas == 2'b01)
+					state_next = 4'b0111;
+				else if (moedas == 2'b10)
+					state_next = 4'b1000;
+				else if (moedas == 2'b11)	
+					state_next = 4'b0000;
+				else
+					state_next = state_reg;
+			end
+			c_175: begin
+				total = c_175;
+				if(moedas == 2'b01)
+					state_next = 4'b1000;
+				else if (moedas == 2'b10)
+					state_next = 4'b0000;
+				else if (moedas == 2'b11)	
+					state_next = 4'b0000;
+				else
+					state_next = state_reg;
+			end
+			c_2: begin
+				total = c_2;
+				if(moedas == 2'b01)
+					state_next = 4'b0000;
+				else if (moedas == 2'b10)
+					state_next = 4'b0000;
+				else if (moedas == 2'b11)	
+					state_next = 4'b0000;
+				else
+					state_next = state_reg;
+			end
+		 endcase
+	end 
+
 endmodule 
-	

@@ -1,0 +1,466 @@
+|circuito_principal
+tecla[0] => tecla[0].IN2
+tecla[1] => tecla[1].IN2
+tecla[2] => tecla[2].IN2
+tecla[3] => tecla[3].IN2
+moedas[0] => moedas[0].IN1
+moedas[1] => moedas[1].IN1
+clk => clk.IN7
+segmentos[0] << multiplexadorSegmentos:muxSeg.segmentos
+segmentos[1] << multiplexadorSegmentos:muxSeg.segmentos
+segmentos[2] << multiplexadorSegmentos:muxSeg.segmentos
+segmentos[3] << multiplexadorSegmentos:muxSeg.segmentos
+segmentos[4] << multiplexadorSegmentos:muxSeg.segmentos
+segmentos[5] << multiplexadorSegmentos:muxSeg.segmentos
+segmentos[6] << multiplexadorSegmentos:muxSeg.segmentos
+segmentos[7] << multiplexadorSegmentos:muxSeg.segmentos
+displays[0] << displays[0].DB_MAX_OUTPUT_PORT_TYPE
+displays[1] << displays[1].DB_MAX_OUTPUT_PORT_TYPE
+displays[2] << displays[2].DB_MAX_OUTPUT_PORT_TYPE
+displays[3] << displays[3].DB_MAX_OUTPUT_PORT_TYPE
+liberar << liberar.DB_MAX_OUTPUT_PORT_TYPE
+devolver_moedas << always0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|circuito_principal|temporizador:tempos
+clk => contador[0].CLK
+clk => contador[1].CLK
+clk => contador[2].CLK
+estado[0] => Equal0.IN31
+estado[1] => Equal0.IN30
+tempoTeclado <= tempoTeclado$latch.DB_MAX_OUTPUT_PORT_TYPE
+tempoAcumulador <= tempoAcumulador$latch.DB_MAX_OUTPUT_PORT_TYPE
+tempo <= tempo$latch.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|circuito_principal|divisor_clock:comb_16
+clk => contador[0].CLK
+clk => contador[1].CLK
+clk => contador[2].CLK
+clk => contador[3].CLK
+clk => contador[4].CLK
+clk => contador[5].CLK
+clk => contador[6].CLK
+clk => contador[7].CLK
+clk => contador[8].CLK
+clk => contador[9].CLK
+clk => contador[10].CLK
+clk => contador[11].CLK
+clk => contador[12].CLK
+clk => contador[13].CLK
+clk => contador[14].CLK
+clk => contador[15].CLK
+clk => contador[16].CLK
+clk => contador[17].CLK
+clk => contador[18].CLK
+clk => contador[19].CLK
+clk => contador[20].CLK
+clk => contador[21].CLK
+clk => contador[22].CLK
+clk => contador[23].CLK
+clk => contador[24].CLK
+clk => contador[25].CLK
+clk => contador[26].CLK
+clk => contador[27].CLK
+clk => contador[28].CLK
+saida_tempo <= contador[1].DB_MAX_OUTPUT_PORT_TYPE
+saida_multiplex <= contador[17].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|circuito_principal|acumulador:ac
+moedas[0] => Equal0.IN0
+moedas[0] => Equal1.IN1
+moedas[0] => Equal2.IN1
+moedas[1] => Equal0.IN1
+moedas[1] => Equal1.IN0
+moedas[1] => Equal2.IN0
+clk => state_reg~1.DATAIN
+reset => state_reg~3.DATAIN
+total[0] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+total[1] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+total[2] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+total[3] <= total[3].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|circuito_principal|controlador_teclado:teclas
+tecla[0] => Equal1.IN3
+tecla[0] => Equal2.IN3
+tecla[0] => Equal3.IN3
+tecla[0] => Equal4.IN0
+tecla[1] => Equal1.IN2
+tecla[1] => Equal2.IN2
+tecla[1] => Equal3.IN0
+tecla[1] => Equal4.IN3
+tecla[2] => Equal1.IN1
+tecla[2] => Equal2.IN0
+tecla[2] => Equal3.IN2
+tecla[2] => Equal4.IN2
+tecla[3] => Equal1.IN0
+tecla[3] => Equal2.IN1
+tecla[3] => Equal3.IN1
+tecla[3] => Equal4.IN1
+tempo => state_reg~3.DATAIN
+estado[0] => Equal0.IN31
+estado[0] => Equal5.IN1
+estado[1] => Equal0.IN30
+estado[1] => Equal5.IN0
+clk => state_reg~1.DATAIN
+digito[0] <= digito[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
+digito[1] <= digito[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|circuito_principal|gerador_codificador:gerador
+tecla[0] => codigo[2].OUTPUTSELECT
+tecla[0] => codigo[3].OUTPUTSELECT
+tecla[0] => codigo[3].IN1
+tecla[0] => Equal1.IN31
+tecla[1] => codigo[2].OUTPUTSELECT
+tecla[1] => codigo[3].IN1
+tecla[1] => Equal1.IN30
+tecla[1] => codigo[3].DATAA
+tecla[2] => codigo[3].IN0
+tecla[2] => Equal1.IN29
+tecla[2] => codigo[2].DATAA
+tecla[3] => codigo[3].IN1
+tecla[3] => Equal1.IN28
+digito[0] => Equal2.IN63
+digito[0] => Equal3.IN63
+digito[1] => Equal2.IN62
+digito[1] => Equal3.IN62
+estado[0] => Equal0.IN31
+estado[1] => Equal0.IN30
+codigo[0] <= codigo[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
+codigo[1] <= codigo[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
+codigo[2] <= codigo[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
+codigo[3] <= codigo[3]$latch.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|circuito_principal|controlador_memoria:controle_mem
+codigo_produto[0] => Decoder0.IN3
+codigo_produto[0] => Mux0.IN19
+codigo_produto[0] => Mux1.IN19
+codigo_produto[0] => Mux2.IN19
+codigo_produto[0] => Mux3.IN19
+codigo_produto[0] => Mux4.IN19
+codigo_produto[1] => Decoder0.IN2
+codigo_produto[1] => Mux0.IN18
+codigo_produto[1] => Mux1.IN18
+codigo_produto[1] => Mux2.IN18
+codigo_produto[1] => Mux3.IN18
+codigo_produto[1] => Mux4.IN18
+codigo_produto[2] => Decoder0.IN1
+codigo_produto[2] => Mux0.IN17
+codigo_produto[2] => Mux1.IN17
+codigo_produto[2] => Mux2.IN17
+codigo_produto[2] => Mux3.IN17
+codigo_produto[2] => Mux4.IN17
+codigo_produto[3] => Decoder0.IN0
+codigo_produto[3] => Mux0.IN16
+codigo_produto[3] => Mux1.IN16
+codigo_produto[3] => Mux2.IN16
+codigo_produto[3] => Mux3.IN16
+codigo_produto[3] => Mux4.IN16
+valor_preco[0] <= valor_preco[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
+valor_preco[1] <= valor_preco[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
+valor_preco[2] <= valor_preco[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
+valor_preco[3] <= valor_preco[3]$latch.DB_MAX_OUTPUT_PORT_TYPE
+produto_existe <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|circuito_principal|vericador_valor:verifica
+total[0] => Equal0.IN3
+total[1] => Equal0.IN2
+total[2] => Equal0.IN1
+total[3] => Equal0.IN0
+valor[0] => Equal0.IN7
+valor[1] => Equal0.IN6
+valor[2] => Equal0.IN5
+valor[3] => Equal0.IN4
+valor_correto <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|circuito_principal|controlador_principal:controle
+clk => estado_reg~1.DATAIN
+produto_existe => Selector2.IN3
+produto_existe => Selector0.IN1
+valor_correto => Selector3.IN3
+valor_correto => Selector0.IN2
+tempo => estado_prox.OUTPUTSELECT
+tempo => estado_prox.OUTPUTSELECT
+tempo => estado_prox.OUTPUTSELECT
+tempo => estado_prox.OUTPUTSELECT
+habilitador[0] => Equal0.IN31
+habilitador[1] => Equal0.IN0
+estado[0] <= estado.DB_MAX_OUTPUT_PORT_TYPE
+estado[1] <= estado.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|circuito_principal|display_segmentos:display
+clk => clk.IN4
+estado[0] => Mux0.IN4
+estado[0] => Mux1.IN4
+estado[0] => Mux2.IN4
+estado[0] => Mux3.IN4
+estado[0] => Mux4.IN4
+estado[0] => Mux5.IN4
+estado[0] => Mux6.IN4
+estado[0] => Mux7.IN4
+estado[0] => Mux8.IN4
+estado[0] => Mux9.IN4
+estado[0] => Mux10.IN3
+estado[0] => Mux11.IN3
+estado[0] => Mux12.IN4
+estado[0] => Mux13.IN4
+estado[0] => Mux14.IN3
+estado[0] => Mux15.IN3
+estado[0] => Decoder0.IN1
+estado[1] => Mux0.IN3
+estado[1] => Mux1.IN3
+estado[1] => Mux2.IN3
+estado[1] => Mux3.IN3
+estado[1] => Mux4.IN3
+estado[1] => Mux5.IN3
+estado[1] => Mux6.IN3
+estado[1] => Mux7.IN3
+estado[1] => Mux8.IN3
+estado[1] => Mux9.IN3
+estado[1] => Mux10.IN2
+estado[1] => Mux11.IN2
+estado[1] => Mux12.IN3
+estado[1] => Mux13.IN3
+estado[1] => Mux14.IN2
+estado[1] => Mux15.IN2
+estado[1] => Decoder0.IN0
+codigo_produto[0] => Mux15.IN4
+codigo_produto[1] => Mux14.IN4
+codigo_produto[2] => Mux11.IN4
+codigo_produto[3] => Mux10.IN4
+total[0] => always0.IN0
+total[0] => always0.IN0
+total[0] => always0.IN0
+total[0] => always0.IN0
+total[1] => always0.IN1
+total[1] => always0.IN1
+total[1] => always0.IN1
+total[1] => always0.IN1
+total[2] => always0.IN0
+total[2] => always0.IN0
+total[2] => always0.IN0
+total[3] => always0.IN1
+total[3] => always0.IN1
+total[3] => always0.IN1
+segmentosA[0] <= decodificador:decodA.seg
+segmentosA[1] <= decodificador:decodA.seg
+segmentosA[2] <= decodificador:decodA.seg
+segmentosA[3] <= decodificador:decodA.seg
+segmentosA[4] <= decodificador:decodA.seg
+segmentosA[5] <= decodificador:decodA.seg
+segmentosA[6] <= decodificador:decodA.seg
+segmentosA[7] <= decodificador:decodA.seg
+segmentosB[0] <= decodificador:decodB.seg
+segmentosB[1] <= decodificador:decodB.seg
+segmentosB[2] <= decodificador:decodB.seg
+segmentosB[3] <= decodificador:decodB.seg
+segmentosB[4] <= decodificador:decodB.seg
+segmentosB[5] <= decodificador:decodB.seg
+segmentosB[6] <= decodificador:decodB.seg
+segmentosB[7] <= decodificador:decodB.seg
+segmentosC[0] <= decodificador:decodC.seg
+segmentosC[1] <= decodificador:decodC.seg
+segmentosC[2] <= decodificador:decodC.seg
+segmentosC[3] <= decodificador:decodC.seg
+segmentosC[4] <= decodificador:decodC.seg
+segmentosC[5] <= decodificador:decodC.seg
+segmentosC[6] <= decodificador:decodC.seg
+segmentosC[7] <= decodificador:decodC.seg
+segmentosD[0] <= decodificador:decodD.seg
+segmentosD[1] <= decodificador:decodD.seg
+segmentosD[2] <= decodificador:decodD.seg
+segmentosD[3] <= decodificador:decodD.seg
+segmentosD[4] <= decodificador:decodD.seg
+segmentosD[5] <= decodificador:decodD.seg
+segmentosD[6] <= decodificador:decodD.seg
+segmentosD[7] <= decodificador:decodD.seg
+
+
+|circuito_principal|display_segmentos:display|decodificador:decodA
+codigo[0] => Decoder0.IN3
+codigo[1] => Decoder0.IN2
+codigo[2] => Decoder0.IN1
+codigo[3] => Decoder0.IN0
+seg[0] <= seg[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[1] <= seg[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[2] <= seg[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[3] <= seg[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[4] <= seg[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[5] <= seg[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[6] <= seg[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[7] <= seg[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clk => seg[0]~reg0.CLK
+clk => seg[1]~reg0.CLK
+clk => seg[2]~reg0.CLK
+clk => seg[3]~reg0.CLK
+clk => seg[4]~reg0.CLK
+clk => seg[5]~reg0.CLK
+clk => seg[6]~reg0.CLK
+clk => seg[7]~reg0.CLK
+
+
+|circuito_principal|display_segmentos:display|decodificador:decodB
+codigo[0] => Decoder0.IN3
+codigo[1] => Decoder0.IN2
+codigo[2] => Decoder0.IN1
+codigo[3] => Decoder0.IN0
+seg[0] <= seg[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[1] <= seg[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[2] <= seg[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[3] <= seg[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[4] <= seg[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[5] <= seg[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[6] <= seg[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[7] <= seg[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clk => seg[0]~reg0.CLK
+clk => seg[1]~reg0.CLK
+clk => seg[2]~reg0.CLK
+clk => seg[3]~reg0.CLK
+clk => seg[4]~reg0.CLK
+clk => seg[5]~reg0.CLK
+clk => seg[6]~reg0.CLK
+clk => seg[7]~reg0.CLK
+
+
+|circuito_principal|display_segmentos:display|decodificador:decodC
+codigo[0] => Decoder0.IN3
+codigo[1] => Decoder0.IN2
+codigo[2] => Decoder0.IN1
+codigo[3] => Decoder0.IN0
+seg[0] <= seg[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[1] <= seg[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[2] <= seg[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[3] <= seg[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[4] <= seg[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[5] <= seg[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[6] <= seg[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[7] <= seg[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clk => seg[0]~reg0.CLK
+clk => seg[1]~reg0.CLK
+clk => seg[2]~reg0.CLK
+clk => seg[3]~reg0.CLK
+clk => seg[4]~reg0.CLK
+clk => seg[5]~reg0.CLK
+clk => seg[6]~reg0.CLK
+clk => seg[7]~reg0.CLK
+
+
+|circuito_principal|display_segmentos:display|decodificador:decodD
+codigo[0] => Decoder0.IN3
+codigo[1] => Decoder0.IN2
+codigo[2] => Decoder0.IN1
+codigo[3] => Decoder0.IN0
+seg[0] <= seg[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[1] <= seg[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[2] <= seg[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[3] <= seg[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[4] <= seg[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[5] <= seg[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[6] <= seg[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+seg[7] <= seg[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clk => seg[0]~reg0.CLK
+clk => seg[1]~reg0.CLK
+clk => seg[2]~reg0.CLK
+clk => seg[3]~reg0.CLK
+clk => seg[4]~reg0.CLK
+clk => seg[5]~reg0.CLK
+clk => seg[6]~reg0.CLK
+clk => seg[7]~reg0.CLK
+
+
+|circuito_principal|multiplexador:mux
+clk => contador[0].CLK
+clk => contador[1].CLK
+clk => contador[2].CLK
+clk => displays[0]~reg0.CLK
+clk => displays[1]~reg0.CLK
+clk => displays[2]~reg0.CLK
+clk => displays[3]~reg0.CLK
+displays[0] <= displays[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+displays[1] <= displays[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+displays[2] <= displays[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+displays[3] <= displays[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|circuito_principal|multiplexadorSegmentos:muxSeg
+segmentosA[0] => Mux7.IN16
+segmentosA[1] => Mux6.IN16
+segmentosA[2] => Mux5.IN16
+segmentosA[3] => Mux4.IN16
+segmentosA[4] => Mux3.IN16
+segmentosA[5] => Mux2.IN16
+segmentosA[6] => Mux1.IN16
+segmentosA[7] => Mux0.IN16
+segmentosB[0] => Mux7.IN17
+segmentosB[1] => Mux6.IN17
+segmentosB[2] => Mux5.IN17
+segmentosB[3] => Mux4.IN17
+segmentosB[4] => Mux3.IN17
+segmentosB[5] => Mux2.IN17
+segmentosB[6] => Mux1.IN17
+segmentosB[7] => Mux0.IN17
+segmentosC[0] => Mux7.IN18
+segmentosC[1] => Mux6.IN18
+segmentosC[2] => Mux5.IN18
+segmentosC[3] => Mux4.IN18
+segmentosC[4] => Mux3.IN18
+segmentosC[5] => Mux2.IN18
+segmentosC[6] => Mux1.IN18
+segmentosC[7] => Mux0.IN18
+segmentosD[0] => Mux7.IN19
+segmentosD[1] => Mux6.IN19
+segmentosD[2] => Mux5.IN19
+segmentosD[3] => Mux4.IN19
+segmentosD[4] => Mux3.IN19
+segmentosD[5] => Mux2.IN19
+segmentosD[6] => Mux1.IN19
+segmentosD[7] => Mux0.IN19
+displays[0] => Mux0.IN15
+displays[0] => Mux1.IN15
+displays[0] => Mux2.IN15
+displays[0] => Mux3.IN15
+displays[0] => Mux4.IN15
+displays[0] => Mux5.IN15
+displays[0] => Mux6.IN15
+displays[0] => Mux7.IN15
+displays[1] => Mux0.IN14
+displays[1] => Mux1.IN14
+displays[1] => Mux2.IN14
+displays[1] => Mux3.IN14
+displays[1] => Mux4.IN14
+displays[1] => Mux5.IN14
+displays[1] => Mux6.IN14
+displays[1] => Mux7.IN14
+displays[2] => Mux0.IN13
+displays[2] => Mux1.IN13
+displays[2] => Mux2.IN13
+displays[2] => Mux3.IN13
+displays[2] => Mux4.IN13
+displays[2] => Mux5.IN13
+displays[2] => Mux6.IN13
+displays[2] => Mux7.IN13
+displays[3] => Mux0.IN12
+displays[3] => Mux1.IN12
+displays[3] => Mux2.IN12
+displays[3] => Mux3.IN12
+displays[3] => Mux4.IN12
+displays[3] => Mux5.IN12
+displays[3] => Mux6.IN12
+displays[3] => Mux7.IN12
+segmentos[0] <= Mux7.DB_MAX_OUTPUT_PORT_TYPE
+segmentos[1] <= Mux6.DB_MAX_OUTPUT_PORT_TYPE
+segmentos[2] <= Mux5.DB_MAX_OUTPUT_PORT_TYPE
+segmentos[3] <= Mux4.DB_MAX_OUTPUT_PORT_TYPE
+segmentos[4] <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+segmentos[5] <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+segmentos[6] <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+segmentos[7] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+
+
